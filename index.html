@@ -3,218 +3,1251 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="LinguaPath giúp học sinh, sinh viên và người trẻ ở Việt Nam xếp lớp ngoại ngữ và xây lộ trình theo mục tiêu du học hoặc nghề nghiệp.">
+<meta name="description" content="LinguaPath giúp học sinh, sinh viên và người trẻ ở Việt Nam xếp lớp ngoại ngữ và lập lộ trình theo mục tiêu du học hoặc nghề nghiệp.">
 <title>LinguaPath — Xếp lớp và lộ trình ngoại ngữ</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js")</script>
 <style>
-:root{--bg:#f5f7fc;--surface:#fff;--ink:#0f1f3d;--muted:#566382;--line:#dce2ee;--blue:#2457e6;--navy:#10234a;--on-navy:#eaf0ff;--accent:#e8981f;--soft:#eaf0ff;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1226;--surface:#111d38;--ink:#e8eefc;--muted:#9aa8c7;--line:#223055;--blue:#7da0ff;--navy:#182a57;--soft:#17274d}}
-:root[data-theme="dark"]{--bg:#0a1226;--surface:#111d38;--ink:#e8eefc;--muted:#9aa8c7;--line:#223055;--blue:#7da0ff;--navy:#182a57;--soft:#17274d}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+:root{
+  --bg:#f4f7fb; --surface:#fff; --ink:#142033; --muted:#31415f; --line:#d5deea;
+  --blue:#1d4ed8; --blue-ink:#1e3a8a; --navy:#10234a; --on-navy:#f4f7ff;
+  --soft:#e7eefe; --accent:#b45309; --ok:#166534; --bad:#9f1239;
+  --btn:#1d4ed8; --btn-ink:#fff; --focus:#10234a;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1220; --surface:#121c30; --ink:#eef3fb; --muted:#c9d4ea; --line:#2a3b5c;
+    --blue:#9db7ff; --blue-ink:#dbe6ff; --navy:#182848; --on-navy:#f4f7ff;
+    --soft:#1c2c4d; --accent:#fbbf24; --ok:#86efac; --bad:#fecdd3;
+    --btn:#9db7ff; --btn-ink:#0b1220; --focus:#fbbf24;
+    color-scheme:dark;
+  }
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans JP","Noto Sans KR","Noto Sans SC",sans-serif;line-height:1.6}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--surface);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.logo{font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo i{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--accent));display:inline-block}
-nav{display:flex;gap:18px;overflow-x:auto;font-size:14px}
-nav a{color:var(--muted);text-decoration:none;white-space:nowrap}nav a:hover{color:var(--blue)}
-section{padding:56px 0}
-.eyebrow{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin:0}
-h1{font-size:clamp(34px,6vw,56px);line-height:1.08;letter-spacing:-.03em;margin:12px 0;max-width:15em}
-h2{font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:6px 0 10px}
-h3{margin:0 0 6px;font-size:17px}
-p{margin:0}.muted{color:var(--muted)}
-.hero{display:grid;gap:32px;grid-template-columns:1.3fr .7fr;align-items:start;padding-top:64px}
-.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.btn{display:inline-block;padding:11px 20px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--blue);background:var(--blue);color:#fff}
-.btn.o{background:transparent;color:var(--blue)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro","Noto Sans","Segoe UI",system-ui,sans-serif;line-height:1.55;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:20}
+.skip{position:absolute;left:12px;top:8px;transform:translateY(-140%);background:var(--surface);color:var(--ink);padding:8px 12px;z-index:30;border-radius:8px}
+.skip:focus{transform:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--surface);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px;min-height:60px}
+.logo{font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px;flex:none}
+.logo i{width:26px;height:26px;border-radius:8px;background:var(--navy);box-shadow:inset 0 0 0 3px var(--accent)}
+nav{display:flex;gap:14px;overflow-x:auto;min-width:0;flex:1;font-size:14px;padding:8px 0}
+nav a{color:var(--muted);text-decoration:none;white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+nav a:hover{color:var(--blue)}
+section{padding:48px 0}
+.eyebrow{font-size:13px;font-weight:700;color:var(--blue-ink);letter-spacing:.04em;text-transform:uppercase;margin:0 0 6px}
+h1{font-size:clamp(32px,6vw,52px);line-height:1.12;letter-spacing:-.03em;margin:8px 0 12px}
+h2{font-size:clamp(24px,3.2vw,32px);letter-spacing:-.02em;margin:6px 0 8px}
+h3{margin:0 0 6px;font-size:18px}
+h4{margin:16px 0 6px;font-size:16px}
+p{margin:0 0 8px}
+.muted{color:var(--muted)}
+.hero{display:grid;gap:24px;align-items:start}
+.btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 16px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid var(--btn);background:var(--btn);color:var(--btn-ink);font-family:inherit;cursor:pointer}
+.btn.o{background:transparent;color:var(--blue-ink);border-color:var(--blue)}
+.textlink{color:var(--blue-ink);font-weight:700;min-height:44px;display:inline-flex;align-items:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
 .navy{background:var(--navy);color:var(--on-navy);border-color:transparent}
-.navy ul{margin:14px 0 0;padding-left:18px;font-size:14px;display:grid;gap:10px}
-.grid{display:grid;gap:14px;margin-top:22px}
-.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
-.lang{cursor:pointer;transition:.15s;text-align:left;font:inherit;color:inherit}
-.lang:hover,.lang.on{border-color:var(--blue);transform:translateY(-2px)}
-.lang b{display:block;font-size:28px;margin-top:2px}
-.lang small{color:var(--muted)}
-.num{width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--blue);display:grid;place-items:center;font-weight:800;margin-bottom:10px}
-.bar{display:flex;height:44px;border-radius:12px;overflow:hidden;margin-top:18px;border:1px solid var(--line)}
-.bar div{display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff;opacity:.45;transition:.2s}
+.navy .eyebrow,.navy h2,.navy li{color:var(--on-navy)}
+.navy ul{margin:12px 0 0;padding-left:18px;display:grid;gap:8px}
+.grid{display:grid;gap:12px}
+.g3{grid-template-columns:1fr}
+.g2{grid-template-columns:1fr}
+.lang{text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+.lang b{display:block;font-size:26px;margin-top:2px}
+.lang:hover,.lang.on,.dc:hover,.dc.on{border-color:var(--blue)}
+.num{width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--blue-ink);display:grid;place-items:center;font-weight:800;margin-bottom:8px}
+.res{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.res b{font-size:clamp(32px,6vw,44px);line-height:1;color:var(--blue-ink)}
+.maybe{font-weight:700}
+.bar{display:flex;height:44px;border-radius:12px;overflow:hidden;margin-top:12px;border:1px solid var(--line)}
+.bar div{display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;opacity:.55}
 .bar div.on{opacity:1}
-input[type=range]{width:100%;margin:18px 0 6px;accent-color:var(--blue)}
-.res{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.res b{font-size:40px;color:var(--blue);line-height:1}
-.pill{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--blue);font-size:12px;font-weight:700;margin:2px 4px 2px 0}
-.tabs{display:flex;gap:8px;margin-top:18px}
-.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 18px;border-radius:99px;font:inherit;font-weight:600;cursor:pointer}
-.tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.stages{counter-reset:s;display:grid;gap:10px;margin-top:16px}
-.stage{display:flex;gap:14px;align-items:flex-start;padding:14px 16px}
-.stage::before{counter-increment:s;content:counter(s);flex:none;width:30px;height:30px;border-radius:9px;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font-weight:700;font-size:14px}
-.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
-.dash .card{padding:16px}.dash p{font-size:14px;color:var(--muted)}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:6px}
+input[type=range]{width:100%;max-width:100%;margin:12px 0;accent-color:var(--blue)}
+.pill{display:inline-block;padding:3px 8px;border-radius:99px;background:var(--soft);color:var(--blue-ink);font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+.sample-tabs{display:none;gap:8px;margin:12px 0}
+.sample-grid{display:grid;gap:12px}
+.stages{display:grid;gap:10px}
+.stage{display:flex;gap:12px;align-items:flex-start}
+.stage::before{counter-increment:s;content:counter(s);flex:none;width:30px;height:30px;border-radius:8px;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;font-weight:700}
+.stages{counter-reset:s}
 .note{border-left:4px solid var(--accent)}
-footer{border-top:1px solid var(--line);padding:28px 0 36px;font-size:14px;color:var(--muted);background:var(--surface)}
-@media(max-width:820px){.hero,.g3,.g2,.dash{grid-template-columns:1fr}.g3.l{grid-template-columns:repeat(2,1fr)}}
-.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
-.opt:hover:not(:disabled){border-color:var(--blue)}.opt.ok{border-color:#2f9e6e;background:rgba(47,158,110,.16)}.opt.bad{border-color:#d64545;background:rgba(214,69,69,.16)}.opt:disabled{cursor:default;color:var(--ink)}
-.qp{font-size:20px;font-weight:600;margin-top:8px}.fb{margin-top:12px;font-size:14px;min-height:22px}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-nav{min-width:0;gap:14px}.logo{flex:none}
-.pbar{height:7px;background:var(--line);border-radius:9px;margin-top:10px;overflow:hidden}.pbar i{display:block;height:100%;background:var(--blue)}
-.stim{background:var(--soft);padding:12px 14px;border-radius:12px;margin-top:12px}.lrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
-.opt.sel{border-color:var(--blue);background:var(--soft)}.btn:disabled{opacity:.45;cursor:not-allowed}button.btn{font:inherit;font-weight:600;cursor:pointer}
-.sk{display:grid;grid-template-columns:90px 1fr 46px;gap:10px;align-items:center;margin-top:8px;font-size:14px}.sk .pbar{margin:0}
-.dc{text-align:left;font:inherit;color:inherit;cursor:pointer}.dc:hover,.dc.on{border-color:var(--blue)}
-details{margin-top:14px}summary{cursor:pointer;font-weight:600}li{margin:6px 0}
+.note-inline{border-left:4px solid var(--accent);padding-left:10px}
+label,legend{font-weight:700;font-size:14px}
+.field{margin-top:12px}
+input[type=text],input[type=number],input[type=date],select{width:100%;max-width:100%;min-height:44px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.check{display:flex;gap:8px;align-items:center;min-height:44px}
+fieldset{border:1px solid var(--line);border-radius:12px;margin:12px 0 0;padding:8px 12px 12px}
+.opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer;min-height:44px}
+.opt.sel{border-color:var(--blue);background:var(--soft)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+.qp{font-size:20px;font-weight:650;margin-top:8px}
+.stim{background:var(--soft);padding:12px 14px;border-radius:12px;margin-top:12px}
+.lrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.pbar{height:8px;background:var(--line);border-radius:9px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--btn)}
+.sk{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,2fr) auto;gap:8px;align-items:center;margin-top:8px}
+.week,.week ul{padding-left:18px}
+.xscroll{overflow-x:auto;max-width:100%;margin-top:12px}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;font-size:14px}
+th{background:var(--soft);color:var(--blue-ink)}
+.err{color:var(--bad);font-weight:700}
+.dash{display:grid;gap:12px}
+.dc{text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+footer{border-top:1px solid var(--line);padding:24px 0 36px;color:var(--muted);background:var(--surface);font-size:14px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.btn:focus-visible,.navy :focus-visible{outline-color:var(--accent)}
+.btn:disabled{background:#d5dbe6;border-color:#d5dbe6;color:#243044;cursor:not-allowed}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+@media (min-width:768px){
+  .g2{grid-template-columns:1fr 1fr}
+  .dash{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:1.3fr .8fr}
+}
+@media (min-width:820px){
+  .sample-tabs{display:none !important}
+  .sample-grid{grid-template-columns:1fr 1fr}
+  .sample-grid .sample-panel{display:block !important}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+}
+@media (max-width:819px){
+  html.js .sample-tabs{display:flex}
+  html.js .sample-grid .sample-panel{display:none}
+  html.js .sample-grid .sample-panel.on{display:block}
+}
+@media (min-width:1100px){
+  .dash{grid-template-columns:1fr 1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
+@media print{
+  header,.noprint,.sample-tabs{display:none !important}
+  .sample-panel{display:block !important}
+  body{background:#fff;color:#111}
+  a{color:#111}
+  .card{break-inside:avoid}
+}
 </style>
 </head>
 <body>
-<noscript><p style="padding:20px">Trang này cần bật JavaScript để làm bài và dùng các mục tương tác.</p></noscript>
+<a class="skip" href="#languages">Tới bài xếp lớp</a>
 <header><div class="wrap"><a class="logo" href="#top"><i></i>LinguaPath</a>
 <nav><a href="#languages">Ngôn ngữ</a><a href="#scoring">Cách chấm</a><a href="#roadmap">Lộ trình</a><a href="#dashboard">Bảng học</a><a href="#limits">Giới hạn</a></nav></div></header>
-
 <main id="top">
 <div class="wrap">
 <section class="hero">
 <div>
 <p class="eyebrow">Xếp lớp và lộ trình</p>
-<h1>Don’t just learn a language. Build your future.</h1>
-<p style="font-size:19px;font-weight:600">Học ngoại ngữ đúng mục tiêu — kiến tạo tương lai quốc tế.</p>
-<p class="muted" style="margin-top:14px;max-width:34em">LinguaPath giúp học sinh, sinh viên và người trẻ ở Việt Nam xem mình đang ở đâu, rồi xếp một lộ trình theo mục tiêu du học hoặc nghề nghiệp. Lịch học đổi khi kỹ năng yếu, quỹ thời gian hoặc mục tiêu đổi. Không cam kết điểm thi.</p>
-<div class="btns"><a class="btn" href="#languages">Chọn ngôn ngữ</a><a class="btn o" href="#roadmap">Xem lộ trình</a><a class="btn o" href="#dashboard">Bảng học</a></div>
+<h1>Học ngoại ngữ đúng mục tiêu — kiến tạo tương lai quốc tế.</h1>
+<p class="muted">LinguaPath giúp học sinh, sinh viên và người trẻ ở Việt Nam xem mình đang ở đâu, rồi xếp lịch theo mục tiêu du học hoặc nghề nghiệp. Lịch đổi khi kỹ năng yếu, quỹ thời gian hoặc mục tiêu đổi. Không cam kết điểm thi.</p>
+<div class="btns"><a class="btn" href="#languages">Làm bài xếp lớp (khoảng 10 phút)</a><a class="textlink" href="#roadmap">Xem lộ trình mẫu</a></div>
 </div>
-<aside class="card navy"><h2 style="font-size:19px;margin:0">Bài đánh giá trả về gì</h2>
-<ul><li>Mức CEFR ước lượng: A1 đến C2.</li><li>Điểm riêng cho Đọc, Nghe, Ngữ pháp, Từ vựng.</li><li>Kỹ năng mạnh nhất, yếu nhất và việc nên ưu tiên.</li><li>Trạng thái Nói và Viết, nếu bạn làm.</li><li>Luật chấm đã áp dụng, để bạn thấy vì sao ra mức đó.</li></ul></aside>
+<aside class="card navy"><h2 style="font-size:19px">Bài đánh giá trả về gì</h2>
+<ul>
+<li>Mức CEFR ước lượng, kèm khoảng nếu điểm sát ngưỡng.</li>
+<li>Số câu đúng trên số câu được tính ở Đọc, Nghe, Ngữ pháp, Từ vựng.</li>
+<li>Nhãn yếu nhất hoặc mạnh nhất chỉ khi chênh ít nhất 2 câu.</li>
+<li>Luật chấm đã áp dụng, gồm trần A1, A2, B1, B2 và C1.</li>
+<li>Nói và Viết không nằm trong 24 câu, không tính vào mức CEFR.</li>
+</ul>
+</aside>
 </section>
 
-<section id="languages" style="padding-top:20px">
-<p class="eyebrow">Sáu ngôn ngữ</p><h2>Chọn ngôn ngữ</h2>
-<p class="muted" style="max-width:40em">Sáu đề không dùng chung câu hỏi. Mỗi ngôn ngữ có 24 câu riêng về đọc, nghe, ngữ pháp và từ vựng. Chọn một ngôn ngữ rồi làm bài xếp lớp ngay tại đây, chấm theo luật ở phần bên dưới.</p>
-<div class="grid g3 l" id="langs"></div>
-<div class="card" id="langInfo" style="margin-top:14px"></div>
-<div class="card" id="hist" style="margin-top:14px" hidden></div>
+<section id="languages">
+<p class="eyebrow">Sáu ngôn ngữ</p>
+<h2>Chọn ngôn ngữ</h2>
+<p class="muted">Sáu đề không dùng chung câu hỏi. Mỗi ngôn ngữ có 24 câu riêng: Đọc, Nghe, Ngữ pháp, Từ vựng. Mỗi phần có câu dễ, vừa và khó.</p>
+<div class="grid g3" id="langs">
+<article class="card"><small>Tiếng Anh</small><b lang="en">English</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+<article class="card"><small>Tiếng Nhật</small><b lang="ja">日本語</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+<article class="card"><small>Tiếng Hàn</small><b lang="ko">한국어</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+<article class="card"><small>Tiếng Đức</small><b lang="de">Deutsch</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+<article class="card"><small>Tiếng Trung</small><b lang="zh">中文</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+<article class="card"><small>Tiếng Pháp</small><b lang="fr">Français</b><p class="muted">24 câu đọc, nghe, ngữ pháp, từ vựng.</p></article>
+</div>
+<div class="card" id="langInfo" style="margin-top:14px">
+<p class="eyebrow">Bài xếp lớp</p>
+<h3>24 câu cho mỗi ngôn ngữ</h3>
+<p class="muted">Khi trình duyệt chạy được mã của trang, bạn bấm một ngôn ngữ phía trên để làm bài ngay tại đây. Câu Nghe dùng giọng máy của trình duyệt. Mở phụ đề thì câu đó không tính điểm. Nói và Viết không có trong bài này.</p>
+</div>
+<div class="card" id="hist" style="margin-top:14px">
+<p class="eyebrow">Lịch sử bài làm</p>
+<p class="muted">Lịch sử chỉ lưu trong trình duyệt của bạn, không gửi đi. Xóa dữ liệu trình duyệt sẽ xóa lịch sử. Cần ít nhất hai bài cùng ngôn ngữ thì mới so được điểm.</p>
+</div>
 </section>
 
 <section>
-<p class="eyebrow">Ba bước</p><h2>Từ bài xếp lớp đến lịch học</h2>
+<p class="eyebrow">Ba bước</p>
+<h2>Từ bài xếp lớp đến lịch học</h2>
 <div class="grid g3">
-<div class="card"><div class="num">1</div><h3>Làm bài xếp lớp</h3><p class="muted">Bốn kỹ năng khách quan, mỗi câu có độ khó dễ, vừa hoặc khó. Kết quả kèm luật chấm đã áp dụng.</p></div>
-<div class="card"><div class="num">2</div><h3>Đặt mục tiêu</h3><p class="muted">Chọn du học hoặc nghề nghiệp, mức CEFR muốn đạt, ngày đích và số phút học mỗi ngày.</p></div>
-<div class="card"><div class="num">3</div><h3>Học theo lộ trình</h3><p class="muted">Lộ trình chia giai đoạn, bài mỗi ngày, và tự điều chỉnh khi bạn đổi hồ sơ.</p></div>
+<div class="card"><div class="num">1</div><h3>Làm bài xếp lớp</h3><p class="muted">Bốn kỹ năng khách quan. Kết quả kèm luật đã áp dụng và số câu đúng.</p></div>
+<div class="card"><div class="num">2</div><h3>Đặt mục tiêu</h3><p class="muted">Chọn du học hoặc nghề nghiệp, mức muốn đạt, ngày đích và số phút mỗi ngày.</p></div>
+<div class="card"><div class="num">3</div><h3>Học theo lộ trình</h3><p class="muted">Giai đoạn, lịch tuần và việc nên làm đổi theo hồ sơ bạn nhập.</p></div>
 </div>
 </section>
 
 <section id="scoring">
-<p class="eyebrow">Luật chấm minh bạch</p><h2>Vì sao ra mức này?</h2>
-<p class="muted" style="max-width:40em">Kéo thanh bên dưới để xem tổng điểm có trọng số tương ứng với mức CEFR tạm thời nào.</p>
-<div class="card" style="margin-top:20px">
-<div class="res"><b id="band">B1</b><span id="bandVi" style="font-weight:600"></span><span class="muted" id="pct"></span></div>
-<input type="range" id="rng" min="0" max="100" value="50" aria-label="Tổng điểm có trọng số">
-<div class="bar" id="bar"></div>
+<p class="eyebrow">Luật chấm minh bạch</p>
+<h2>Vì sao ra mức này?</h2>
+<p class="muted">Mức tạm lấy từ tổng điểm có trọng số. Trần độ khó chỉ được kéo mức xuống, không kéo lên. Mức hiển thị là mức thấp hơn giữa hai cách tính.</p>
+<div class="card" style="margin-top:16px">
+<div class="res"><b id="band">50% · B1</b><span id="bandVi">Trung cấp</span></div>
+<label for="rng">Kéo để xem mức tạm theo tổng điểm có trọng số</label>
+<input type="range" id="rng" min="0" max="100" value="50">
+<div class="bar" id="bar" role="img" aria-label="Thang mức tạm từ A1 đến C2">
+<div style="flex:25;background:#3d4d73">A1</div>
+<div style="flex:17;background:#0f6e62">A2</div>
+<div style="flex:16;background:#1d4f9c" class="on">B1</div>
+<div style="flex:16;background:#4338ca">B2</div>
+<div style="flex:14;background:#9a3412">C1</div>
+<div style="flex:12;background:#9d174d">C2</div>
 </div>
-<div class="grid g3">
-<div class="card"><h3>Điểm có trọng số</h3><p class="muted" style="font-size:14px">Câu dễ ×1, câu vừa ×1,6, câu khó ×2,4. Làm đúng toàn bộ câu dễ vẫn không đủ để lên C1 hay C2.</p></div>
-<div class="card"><h3>Trần theo độ khó</h3><p class="muted" style="font-size:14px">Dưới 50% câu dễ thì trần A1. Dưới hai câu khó đúng thì trần B1. C2 chỉ khi câu khó đúng từ 75%.</p></div>
-<div class="card"><h3>Bốn kỹ năng</h3><p><span class="pill">Đọc</span><span class="pill">Nghe</span><span class="pill">Ngữ pháp</span><span class="pill">Từ vựng</span></p><p class="muted" style="font-size:14px;margin-top:6px">Nói là tự khai. Viết chỉ được mô tả theo độ dài và từ nối.</p></div>
+<div class="ticks" aria-hidden="true"><span>0</span><span>25</span><span>42</span><span>58</span><span>74</span><span>88</span><span>100</span></div>
+<p id="bandLive" aria-live="polite">50% thuộc khoảng từ 42% đến dưới 58%, nên mức tạm là B1 — Trung cấp. Theo được ý chính ở đề quen thuộc, chưa ổn định với bài khó. Trần độ khó có thể hạ mức này, không kéo lên cao hơn.</p>
+</div>
+<div class="grid g3" style="margin-top:12px">
+<div class="card"><h3>Điểm có trọng số</h3><p class="muted">Câu dễ ×1, câu vừa ×1,6, câu khó ×2,4. Làm đúng toàn bộ câu dễ vẫn không đủ để lên C1 hay C2.</p></div>
+<div class="card"><h3>Trần theo độ khó</h3><p class="muted">Áp từng nhóm câu. Mức cuối bằng mức thấp hơn giữa mức tạm và mọi trần đang áp dụng.</p></div>
+<div class="card"><h3>Bốn kỹ năng</h3><p><span class="pill">Đọc</span><span class="pill">Nghe</span><span class="pill">Ngữ pháp</span><span class="pill">Từ vựng</span></p><p class="muted">Mỗi kỹ năng khoảng 6 câu. Nhãn yếu nhất hoặc mạnh nhất chỉ khi chênh ít nhất 2 câu. Nếu không, ghi chưa đủ dữ liệu.</p></div>
+</div>
+<div class="xscroll">
+<table>
+<caption class="muted" style="text-align:left;margin-bottom:6px">Mức tạm theo tổng điểm có trọng số</caption>
+<thead><tr><th>Mức tạm</th><th>Khoảng điểm</th><th>Nghĩa trong bài này</th></tr></thead>
+<tbody>
+<tr><td>A1 — Sơ cấp</td><td>Dưới 25%</td><td>Ghép được câu rất ngắn về việc quen thuộc.</td></tr>
+<tr><td>A2 — Cơ bản</td><td>Từ 25% đến dưới 42%</td><td>Xử lý được thông tin đơn giản trong câu và đoạn ngắn.</td></tr>
+<tr><td>B1 — Trung cấp</td><td>Từ 42% đến dưới 58%</td><td>Theo được ý chính ở đề quen thuộc, chưa ổn định với bài khó.</td></tr>
+<tr><td>B2 — Trung cấp trên</td><td>Từ 58% đến dưới 74%</td><td>Theo được bài dài hơn và nêu được một ý có giải thích ngắn.</td></tr>
+<tr><td>C1 — Cao cấp</td><td>Từ 74% đến dưới 88%</td><td>Đọc và nghe được nội dung chặt, vẫn có thể hụt ở câu rất khó.</td></tr>
+<tr><td>C2 — Thành thạo</td><td>Từ 88% trở lên</td><td>Chỉ giữ khi không còn trần nào thấp hơn, và câu khó đúng từ 75%.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="xscroll">
+<table>
+<caption class="muted" style="text-align:left;margin-bottom:6px">Trần đầy đủ theo độ khó. C2 không có trần riêng: câu khó đúng từ 75% thì nhóm câu khó không kéo mức xuống.</caption>
+<thead><tr><th>Điều kiện</th><th>Trần mức</th></tr></thead>
+<tbody>
+<tr><td>Câu dễ đúng dưới 50%</td><td>A1</td></tr>
+<tr><td>Câu dễ đúng từ 50% đến dưới 75%</td><td>A2</td></tr>
+<tr><td>Câu vừa đúng dưới 40%</td><td>A2</td></tr>
+<tr><td>Câu vừa đúng từ 40% đến dưới 60%</td><td>B1</td></tr>
+<tr><td>Câu khó đúng dưới 2 câu, hoặc dưới 34%</td><td>B1</td></tr>
+<tr><td>Câu khó đúng từ 2 câu và từ 34% đến dưới 50%</td><td>B2</td></tr>
+<tr><td>Câu khó đúng từ 50% đến dưới 75%</td><td>C1</td></tr>
+<tr><td>Câu khó đúng từ 75%</td><td>Không thêm trần từ câu khó</td></tr>
+</tbody>
+</table>
+</div>
+<div class="card" style="margin-top:12px">
+<h3>Ví dụ tính</h3>
+<p>50% có trọng số nằm từ 42% đến dưới 58%, nên mức tạm là B1 — Trung cấp, không phải A2 và chưa tới B2.</p>
+<p class="muted">Nếu cùng lúc câu dễ đúng chỉ 40% (dưới 50%), trần A1 hạ kết quả xuống A1 dù điểm tổng vẫn là 50%. Một điểm tạm 90% đáng lẽ là C2, nhưng nếu chỉ đúng 1 câu khó thì trần còn B1. C2 chỉ khi mức tạm từ 88% và câu khó đúng từ 75%, đồng thời không trần nào thấp hơn.</p>
 </div>
 </section>
 
 <section id="roadmap">
-<p class="eyebrow">Lộ trình cá nhân</p><h2>Hai hướng, một bài xếp lớp</h2>
-<p class="muted" style="max-width:42em">Hai hồ sơ khác nhau sẽ ra hai lộ trình khác nhau. Du học nghiêng về đọc, viết và bài giảng; nghề nghiệp nghiêng về nói và email.</p>
-<div class="tabs"><button class="tab on" aria-pressed="true" data-p="study">Du học</button><button class="tab" aria-pressed="false" data-p="career">Nghề nghiệp</button></div>
-<div class="stages" id="stages"></div>
-<p class="card note" style="margin-top:14px;font-size:14px">Không phải giai đoạn nào cũng xuất hiện. Nếu mục tiêu không cao hơn mức hiện tại, lộ trình chỉ có một giai đoạn “Giữ mức và vá kỹ năng yếu”. Giai đoạn chứng chỉ chỉ có khi bạn chọn một chứng chỉ và mục tiêu đạt mức tối thiểu của nó.</p>
-<div class="card" style="margin-top:18px"><h3>Lộ trình dựa trên những gì bạn nhập</h3>
-<p><span class="pill">Bậc học</span><span class="pill">Độ tuổi</span><span class="pill">Kinh nghiệm</span><span class="pill">Mục tiêu CEFR</span><span class="pill">Ngày đích</span><span class="pill">Phút mỗi ngày</span><span class="pill">Ngày học trong tuần</span><span class="pill">Video · Đọc · Nghe · Bài tập</span><span class="pill">Tự học · Lớp · Gia sư</span><span class="pill">Ngân sách</span></p>
-<p class="muted" style="font-size:14px;margin-top:8px">Ngày đích được so với quỹ thời gian: vừa đủ, sát hoặc quá ngắn.</p></div>
+<p class="eyebrow">Lộ trình cá nhân</p>
+<h2>Hai hướng, một cách tính</h2>
+<p class="muted">Hai ví dụ dưới đây do cùng một cách tính sinh ra, từ hai hồ sơ khác nhau. Không phải kết quả của bạn.</p>
+<div class="sample-tabs" id="sampleTabs" role="tablist" aria-label="Lộ trình mẫu">
+<button class="btn" id="tab-study" type="button" role="tab" aria-selected="true" aria-controls="sample-study" tabindex="0">Du học · Ví dụ</button>
+<button class="btn o" id="tab-career" type="button" role="tab" aria-selected="false" aria-controls="sample-career" tabindex="-1">Nghề nghiệp · Ví dụ</button>
+</div>
+<div class="sample-grid">
+<article class="card sample-panel on" id="sample-study" tabindex="0">
+<p class="pill">Ví dụ</p>
+<p class="eyebrow">Du học · ví dụ</p>
+<h3>Tiếng Anh · A2 → B2</h3>
+<p>Hồ sơ mẫu: yếu Nghe, muốn du học Úc, 60 phút mỗi ngày, 5 ngày mỗi tuần. Mức B2 là giả định để xếp lịch, không phải điều kiện của một trường.</p>
+<p>Khoảng 425 giờ, tức khoảng 85 tuần. Chưa chọn ngày đích.</p>
+<h4>Thứ tự ưu tiên</h4>
+<ol><li>Nghe</li><li>Đọc</li><li>Viết</li><li>Nói</li><li>Từ vựng</li><li>Ngữ pháp</li></ol>
+<h4>Giai đoạn</h4>
+<ol>
+<li>Vá nền Tiếng Anh: nghe thông báo và bài giảng ngắn.</li>
+<li>Phát triển ngôn ngữ: đoạn ngắn, ý chính, câu nối.</li>
+<li>Ngôn ngữ học thuật cho du học: bài giảng, đoạn ngành học, tóm tắt có ví dụ.</li>
+<li>Làm chắc B2: bài dài hơn, vẫn xoay quanh Nghe.</li>
+</ol>
+<p class="muted">Buổi 60 phút chia ba phần. Ngày học nghiêng về nghe. Không có giai đoạn chứng chỉ vì ví dụ này chưa chọn chứng chỉ.</p>
+</article>
+<article class="card sample-panel" id="sample-career" tabindex="0">
+<p class="pill">Ví dụ</p>
+<p class="eyebrow">Nghề nghiệp · ví dụ</p>
+<h3>Tiếng Nhật · A1 → B1</h3>
+<p>Hồ sơ mẫu: người mới, muốn tìm hiểu yêu cầu tiếng Nhật cho nghề sau này, 45 phút mỗi ngày, 5 ngày mỗi tuần.</p>
+<p>Khoảng 405 giờ, tức khoảng 108 tuần. Chữ và độ mới của ngôn ngữ làm lịch dài hơn dù ít bậc hơn.</p>
+<h4>Thứ tự ưu tiên</h4>
+<ol><li>Từ vựng</li><li>Ngữ pháp</li><li>Nói</li><li>Nghe</li><li>Đọc</li><li>Viết</li></ol>
+<h4>Giai đoạn</h4>
+<ol>
+<li>Nền tảng Tiếng Nhật: hiragana, katakana, câu chào chỗ làm.</li>
+<li>Phát triển ngôn ngữ: câu ngắn, tin ngắn, số giờ và địa điểm.</li>
+<li>Tiếng Nhật chỗ làm: email xác nhận lịch, giao việc. Không cam kết việc làm.</li>
+</ol>
+<p class="muted">Buổi 45 phút chia hai phần, không tách thành hai buổi. Không có giai đoạn học thuật.</p>
+</article>
+</div>
+<p class="muted">Giai đoạn chỉ hiện khi khớp mức hiện tại, mục tiêu và chứng chỉ bạn chọn. Nếu mức muốn đạt không cao hơn mức hiện tại, lộ trình còn một giai đoạn vá kỹ năng yếu.</p>
+
+<div class="card" style="margin-top:18px">
+<h3>Tạo lộ trình của bạn</h3>
+<p class="muted" id="fromTest" hidden></p>
+<form id="planForm">
+<div class="grid g2">
+<div class="field">
+<label for="f-goal">Mục tiêu</label>
+<select id="f-goal" name="goal">
+<option value="study">Du học</option>
+<option value="career">Nghề nghiệp</option>
+</select>
+<label for="f-note" style="margin-top:8px">Ghi chú mục tiêu, nếu có</label>
+<input id="f-note" name="note" type="text" maxlength="80" placeholder="Ví dụ: du học Úc, hồ sơ đại học, việc làm">
+</div>
+<div class="field">
+<label for="f-target">Mức CEFR muốn đạt</label>
+<select id="f-target" name="target">
+<option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option>
+</select>
+</div>
+<div class="field">
+<label for="f-date">Ngày đích</label>
+<input id="f-date" name="date" type="date">
+</div>
+<div class="field">
+<label for="f-min">Phút mỗi ngày</label>
+<input id="f-min" name="minutes" type="number" min="10" max="240" step="5" value="45">
+</div>
+</div>
+<details>
+<summary>Tùy chỉnh nâng cao</summary>
+<div class="grid g2">
+<div class="field"><label for="f-name">Tên hiển thị</label><input id="f-name" type="text" maxlength="40" autocomplete="nickname"><p class="muted">Chỉ hiện trên trình duyệt này. Có thể bỏ trống.</p></div>
+<div class="field"><label for="f-lang">Ngôn ngữ</label>
+<select id="f-lang"><option value="0">Tiếng Anh</option><option value="1">Tiếng Nhật</option><option value="2">Tiếng Hàn</option><option value="3">Tiếng Đức</option><option value="4">Tiếng Trung</option><option value="5">Tiếng Pháp</option></select></div>
+<div class="field"><label for="f-cur">Mức hiện tại</label>
+<select id="f-cur"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div>
+<div class="field"><label for="f-weak">Kỹ năng ưu tiên</label>
+<select id="f-weak"><option value="unknown">Chưa đủ dữ liệu</option><option value="reading">Đọc</option><option value="listening">Nghe</option><option value="grammar">Ngữ pháp</option><option value="vocabulary">Từ vựng</option><option value="speaking">Nói</option><option value="writing">Viết</option></select></div>
+<div class="field"><label for="f-edu">Bậc học</label>
+<select id="f-edu"><option value="">Bỏ qua</option><option value="thpt">Phổ thông</option><option value="dh">Đại học</option><option value="dilam">Đi làm</option></select></div>
+<div class="field"><label for="f-age">Khoảng tuổi, không bắt buộc</label>
+<select id="f-age" aria-describedby="ageHelp"><option value="">Bỏ qua</option><option value="duoi-18">Dưới 18</option><option value="18-22">18–22</option><option value="23-30">23–30</option><option value="tren-30">Trên 30</option></select>
+<p class="muted" id="ageHelp">Hỏi khoảng tuổi để chọn ví dụ gần bậc học hoặc việc làm. Bạn có thể bỏ qua. Không dùng để chấm năng lực.</p></div>
+<div class="field"><label for="f-exp">Kinh nghiệm với ngôn ngữ này</label>
+<select id="f-exp"><option value="">Chưa chọn</option><option value="moi">Mới bắt đầu</option><option value="co">Đã học một thời gian</option><option value="dung">Đang dùng khi làm việc</option></select></div>
+<div class="field"><label for="f-days">Số ngày học mỗi tuần</label>
+<select id="f-days"><option>1</option><option>2</option><option>3</option><option>4</option><option selected>5</option><option>6</option><option>7</option></select></div>
+<div class="field"><label for="f-format">Hình thức học</label>
+<select id="f-format"><option value="tu">Tự học</option><option value="lop">Lớp</option><option value="giasu">Gia sư</option></select></div>
+<div class="field"><label for="f-budget">Ngân sách (VNĐ/tháng)</label>
+<input id="f-budget" type="text" inputmode="numeric" placeholder="Ví dụ: 1500000" aria-describedby="budgetHelp">
+<p class="muted" id="budgetHelp">Đơn vị: VNĐ/tháng. Để trống nếu chưa tính. Trang không thu tiền.</p></div>
+<div class="field"><label for="f-cert">Chứng chỉ muốn tìm hiểu</label>
+<select id="f-cert"><option value="">Chưa chọn</option></select>
+<p class="muted">Mốc cạnh tên chứng chỉ chỉ là mốc tham khảo của trang này, không phải điểm quy đổi chính thức.</p></div>
+</div>
+<fieldset>
+<legend>Loại hoạt động</legend>
+<label class="check"><input type="checkbox" name="act" value="video" checked> Video</label>
+<label class="check"><input type="checkbox" name="act" value="doc" checked> Đọc</label>
+<label class="check"><input type="checkbox" name="act" value="nghe" checked> Nghe</label>
+<label class="check"><input type="checkbox" name="act" value="baitap" checked> Bài tập</label>
+</fieldset>
+</details>
+<p class="err" id="formErr" hidden></p>
+<div class="lrow noprint"><button class="btn" type="submit">Tạo lộ trình</button><button class="btn o" id="printBtn" type="button">In / Lưu PDF</button><button class="btn o" id="copyBtn" type="button">Sao chép tóm tắt lộ trình</button></div>
+<p id="copyStatus" role="status"></p>
+<p id="saveWarn" class="err" hidden></p>
+</form>
+<div id="planOut" aria-live="polite" style="margin-top:16px"></div>
+<p class="muted">Kết quả bài làm, lịch sử và lộ trình chỉ lưu trong trình duyệt của bạn. Trang không gửi các dữ liệu này đi đâu. Xóa dữ liệu trình duyệt sẽ xóa tiến độ.</p>
+</div>
 </section>
 
 <section id="dashboard">
-<p class="eyebrow">Bảng học</p><h2>Chín mục trong bảng học</h2>
-<div class="dash" id="dash"></div>
+<p class="eyebrow">Bảng học</p>
+<h2>Bảng học</h2>
+<p class="muted">Chín mục lấy từ bài làm và lộ trình lưu trong trình duyệt của bạn.</p>
+<div class="dash" id="dash">
+<article class="card"><h3>Tổng quan</h3><p class="muted">Mức hiện tại và việc tiếp theo, sau khi bạn làm bài hoặc tạo lộ trình.</p></article>
+<article class="card"><h3>Bài hôm nay</h3><p class="muted">Việc đúng ngày trong lịch tuần. Ngày không học thì ghi bài gần nhất.</p></article>
+<article class="card"><h3>Hướng đi</h3><p class="muted">Cùng mức và cùng quỹ giờ, đặt hướng du học cạnh hướng nghề nghiệp.</p></article>
+<article class="card"><h3>Luyện tập</h3><p class="muted">Câu đã làm sai trong bài gần nhất, để ôn lại.</p></article>
+<article class="card"><h3>Tiến độ</h3><p class="muted">So tổng điểm các bài cùng ngôn ngữ. Cần ít nhất hai bài.</p></article>
+<article class="card"><h3>Chứng chỉ</h3><p class="muted">Danh sách theo ngôn ngữ. Chỉ vào lộ trình khi bạn chọn và mức muốn đạt đạt mốc tham khảo.</p></article>
+<article class="card"><h3>Thư viện nguồn</h3><p class="muted">Gợi ý bài để tự làm. Trang không tải tài liệu từ mạng.</p></article>
+<article class="card"><h3>Gợi ý luyện tập</h3><p class="muted">Việc nên làm với kỹ năng đang ưu tiên. Không phải người chấm và không dự đoán điểm thi.</p></article>
+<article class="card"><h3>Cài đặt</h3><p class="muted">Tên hiển thị, số phút và số ngày học. Chỉ lưu trong trình duyệt này.</p></article>
+</div>
 </section>
 
 <section id="limits">
-<div class="card note"><h2 style="font-size:22px">Giới hạn cần biết</h2>
-<p class="muted">Đây không phải kỳ thi quốc tế và không cam kết điểm thi. Nói là tự khai. Viết chỉ được mô tả theo độ dài và từ nối. Không có giám khảo. Bài luyện và câu của cố vấn lấy từ dữ liệu học trên máy này.</p></div>
+<div class="card note">
+<h2 style="font-size:22px">Giới hạn cần biết</h2>
+<p>Đây không phải kỳ thi quốc tế và không cam kết điểm thi. Nói và Viết không có trong 24 câu, nên không tính vào mức CEFR. Bạn vẫn có thể chọn hai kỹ năng đó làm ưu tiên khi lập lộ trình. Không có giám khảo.</p>
+<p>Bài làm, lịch sử và lộ trình chỉ lưu trong trình duyệt của bạn. Trang không gửi những dữ liệu này đi máy chủ. Nếu bạn xóa dữ liệu trình duyệt, tiến độ sẽ mất.</p>
+<p class="muted">Gợi ý luyện tập dựa trên lộ trình và bài đã lưu, không phải người chấm.</p>
+</div>
 </section>
 </div>
 </main>
-<footer><div class="wrap">© 2026 LinguaPath — Xếp lớp và lộ trình ngoại ngữ.</div></footer>
-
+<footer><div class="wrap">© 2026 LinguaPath — Xếp lớp và lộ trình ngoại ngữ. Dữ liệu học chỉ nằm trong trình duyệt của bạn.</div></footer>
+<noscript><p class="wrap">Trang vẫn đọc được phần ngôn ngữ, luật chấm, lộ trình mẫu và bảng học khi không chạy mã. Bài xếp lớp và ô tạo lộ trình cần mã của trang.</p></noscript>
 <script>
-const L=[["English","English","Tiếng Anh"],["日本語","Japanese","Tiếng Nhật"],["한국어","Korean","Tiếng Hàn"],["Deutsch","German","Tiếng Đức"],["中文","Chinese","Tiếng Trung"],["Français","French","Tiếng Pháp"]];
-const lg=document.getElementById("langs"),li=document.getElementById("langInfo");
-L.forEach((x,i)=>{const b=document.createElement("button");b.className="card lang"+(i?"":" on");b.innerHTML="<small>"+x[2]+"</small><b>"+x[0]+"</b><small>Làm bài · 24 câu</small>";
-b.onclick=()=>{lg.querySelectorAll(".lang").forEach(e=>e.classList.remove("on"));b.classList.add("on");show(i)};lg.appendChild(b)});
 const DATA=[[{"k":"r","d":1,"p":"What does Linh want to study?","o":["Medicine","Business","Law","Engineering"],"c":1,"e":"Đoạn nói rõ Linh muốn học business ở Australia.","s":"Linh is in grade 11 in Hanoi. She wants to study business in Australia after high school. Every weekday she reviews English vocabulary for 25 minutes before dinner. On Saturday she joins a speaking club at school."},{"k":"r","d":1,"p":"When does Linh review vocabulary?","o":["After dinner on Sunday","Only at the speaking club","Before dinner on weekdays","Every Saturday morning"],"c":2,"e":"Cụm 'every weekday' và 'before dinner' chỉ thời điểm ôn từ vựng.","s":"Linh is in grade 11 in Hanoi. She wants to study business in Australia after high school. Every weekday she reviews English vocabulary for 25 minutes before dinner. On Saturday she joins a speaking club at school."},{"k":"r","d":2,"p":"Which statement is supported by the text?","o":["Linh already has a university offer.","Linh studies medicine in Australia now.","Linh reviews vocabulary only at the weekend.","Linh practices speaking at school on Saturday."],"c":3,"e":"Câu cuối nói Linh tham gia câu lạc bộ nói vào thứ Bảy. Các ý còn lại không có trong đoạn.","s":"Linh is in grade 11 in Hanoi. She wants to study business in Australia after high school. Every weekday she reviews English vocabulary for 25 minutes before dinner. On Saturday she joins a speaking club at school."},{"k":"r","d":2,"p":"According to the passage, a foundation program can…","o":["Guarantee a place at any university.","Replace the university's admission decision.","Help with subject knowledge and academic language.","Remove every language requirement."],"c":2,"e":"Đoạn nói foundation program có thể bù khoảng trống kiến thức ngành và ngôn ngữ học thuật, không thay quyết định tuyển sinh.","s":"Universities often ask international applicants to show they can follow lectures, read academic texts, and write clear arguments. A foundation program can bridge gaps in subject knowledge and academic language, but it does not replace a university's own admission decision. Applicants should read each institution's current language policy rather than treating a short practice score as an official requirement."},{"k":"r","d":3,"p":"What is the author's main warning?","o":["Foundation programs are never useful.","A short practice score is not an institution's official language policy.","Lectures matter more than writing.","Applicants should avoid international study."],"c":1,"e":"Câu cuối khuyên đọc quy định hiện hành của từng trường, không xem điểm bài luyện ngắn là yêu cầu chính thức.","s":"Universities often ask international applicants to show they can follow lectures, read academic texts, and write clear arguments. A foundation program can bridge gaps in subject knowledge and academic language, but it does not replace a university's own admission decision. Applicants should read each institution's current language policy rather than treating a short practice score as an official requirement."},{"k":"r","d":3,"p":"“Does not replace a university's own admission decision” means…","o":["The foundation program makes the final decision.","Admission is automatic after any English course.","Language policy never changes.","The university still decides whether to admit the applicant."],"c":3,"e":"'Does not replace' nghĩa là chương trình nền không thay quyền quyết định nhận hồ sơ của trường.","s":"Universities often ask international applicants to show they can follow lectures, read academic texts, and write clear arguments. A foundation program can bridge gaps in subject knowledge and academic language, but it does not replace a university's own admission decision. Applicants should read each institution's current language policy rather than treating a short practice score as an official requirement."},{"k":"l","d":1,"p":"Where is the library?","o":["Inside the gym","Next to the student cafe","Opposite the station","On the third floor of the station"],"c":1,"e":"Bản nghe nói thư viện ở cạnh quán cà phê sinh viên.","s":"Welcome to the campus tour. The library is next to the student cafe. It opens at eight in the morning and closes at six in the evening. Please bring your student card."},{"k":"l","d":1,"p":"What should visitors bring?","o":["A passport photo","Cash only","A student card","A laptop charger"],"c":2,"e":"Câu cuối yêu cầu mang thẻ sinh viên.","s":"Welcome to the campus tour. The library is next to the student cafe. It opens at eight in the morning and closes at six in the evening. Please bring your student card."},{"k":"l","d":2,"p":"What time does the library close?","o":["8 a.m.","Noon","9 p.m.","6 p.m."],"c":3,"e":"'Closes at six in the evening' là 6 giờ tối, không phải giờ mở cửa.","s":"Welcome to the campus tour. The library is next to the student cafe. It opens at eight in the morning and closes at six in the evening. Please bring your student card."},{"k":"l","d":2,"p":"When should students arrive?","o":["Fifteen minutes early","Exactly when the session ends","Any time before noon","Tomorrow night"],"c":0,"e":"Bản nghe yêu cầu đến sớm mười lăm phút.","s":"This announcement is for students who plan to take an English placement tomorrow. Arrive fifteen minutes early and bring a pencil and your registration email. Phones must stay in your bag. If you miss the session, email the assessment office today. Do not wait until tomorrow morning."},{"k":"l","d":3,"p":"What must stay in the bag?","o":["Pencils","Registration emails","Phones","The assessment office"],"c":2,"e":"'Phones must stay in your bag' — điện thoại phải để trong túi.","s":"This announcement is for students who plan to take an English placement tomorrow. Arrive fifteen minutes early and bring a pencil and your registration email. Phones must stay in your bag. If you miss the session, email the assessment office today. Do not wait until tomorrow morning."},{"k":"l","d":3,"p":"If a student misses the session, what should they do?","o":["Wait until tomorrow morning.","Call the library.","Join the campus tour.","Email the assessment office today."],"c":3,"e":"Nếu lỡ buổi, phải email văn phòng đánh giá trong hôm nay, không chờ đến sáng hôm sau.","s":"This announcement is for students who plan to take an English placement tomorrow. Arrive fifteen minutes early and bring a pencil and your registration email. Phones must stay in your bag. If you miss the session, email the assessment office today. Do not wait until tomorrow morning."},{"k":"g","d":1,"p":"My brother ___ English every evening.","o":["study","studying","studies","studyed"],"c":2,"e":"Chủ ngữ ngôi thứ ba số ít ở hiện tại đơn dùng studies."},{"k":"g","d":1,"p":"There ___ two books on the desk.","o":["are","is","be","was being"],"c":0,"e":"'Two books' là số nhiều nên dùng are."},{"k":"g","d":2,"p":"If I ___ more time, I would check the essay again.","o":["have","has","having","had"],"c":3,"e":"Câu điều kiện loại 2: If + quá khứ đơn (had), mệnh đề chính dùng would."},{"k":"g","d":2,"p":"The application ___ yesterday.","o":["was submitted","submitted","was submit","submits"],"c":0,"e":"Hồ sơ là vật chịu tác động, thời điểm yesterday: bị động quá khứ was submitted."},{"k":"g","d":3,"p":"The advisor suggested that she ___ the introduction.","o":["revises","revised","revise","revising"],"c":2,"e":"Sau suggest that, tiếng Anh trang trọng dùng động từ nguyên mẫu không to: revise."},{"k":"g","d":3,"p":"Not only ___ the lecture, but she also took detailed notes.","o":["she attended","attended she","she did attend","did she attend"],"c":3,"e":"Not only đứng đầu câu thì đảo trợ động từ: did she attend."},{"k":"v","d":1,"p":"Choose the closest meaning of “enormous”.","o":["Very small","Very large","Very slow","Very quiet"],"c":1,"e":"Enormous nghĩa là rất lớn."},{"k":"v","d":1,"p":"This course is free. It doesn't ___ anything.","o":["spend","pay","cost","buy"],"c":2,"e":"Vật làm chủ ngữ của giá tiền dùng cost, không dùng spend."},{"k":"v","d":2,"p":"Which sentence is correct?","o":["She did a decision about the course.","She made a decide about the course.","She made a decision about the course.","She took a decision-making about the course."],"c":2,"e":"Cụm đúng là make a decision."},{"k":"v","d":2,"p":"In an academic text, “significant” most nearly means…","o":["Decorative","Temporary","Unimportant","Meaningful or important"],"c":3,"e":"Significant trong văn học thuật nghĩa là đáng kể, quan trọng."},{"k":"v","d":3,"p":"“The findings are preliminary” means the findings are…","o":["Early and not yet final","Final and complete","Copied from another paper","Unrelated to the study"],"c":0,"e":"Preliminary nghĩa là bước đầu, chưa phải kết luận cuối."},{"k":"v","d":3,"p":"Applicants must ___ the form before the deadline. Incomplete forms will not be reviewed.","o":["suppose","surround","suggest","submit"],"c":3,"e":"Submit the form nghĩa là nộp mẫu đơn trước hạn."}],[{"k":"r","d":1,"p":"佐藤さんは何年生ですか。","o":["高校一年生","高校二年生","大学二年生","中学三年生"],"c":1,"e":"Câu đầu nói 高校二年生, tức học sinh lớp 11 theo cách đếm của Nhật.","s":"佐藤（さとう）さんは高校（こうこう）二年生（にねんせい）です。毎週（まいしゅう）金曜日（きんようび）の放課後（ほうかご）に、学校（がっこう）の図書館（としょかん）で日本語（にほんご）の単語（たんご）を復習（ふくしゅう）します。佐藤さんは日本の大学（だいがく）の工学部（こうがくぶ）に関心（かんしん）がありますが、まだ志望校（しぼうこう）は決（き）めていません。"},{"k":"r","d":1,"p":"単語の復習はいつですか。","o":["毎週月曜日の朝","毎日の夜","毎週金曜日の放課後","土曜日の朝だけ"],"c":2,"e":"Đoạn nói 毎週金曜日の放課後, tức chiều thứ Sáu sau giờ học.","s":"佐藤（さとう）さんは高校（こうこう）二年生（にねんせい）です。毎週（まいしゅう）金曜日（きんようび）の放課後（ほうかご）に、学校（がっこう）の図書館（としょかん）で日本語（にほんご）の単語（たんご）を復習（ふくしゅう）します。佐藤さんは日本の大学（だいがく）の工学部（こうがくぶ）に関心（かんしん）がありますが、まだ志望校（しぼうこう）は決（き）めていません。"},{"k":"r","d":2,"p":"佐藤さんが関心を持っているのは何ですか。","o":["日本の大学の医学部","日本の高校の音楽部","ベトナムの法律事務所","日本の大学の工学部"],"c":3,"e":"Có cụm 工学部に関心があります. 志望校は決めていません nghĩa là chưa chốt trường.","s":"佐藤（さとう）さんは高校（こうこう）二年生（にねんせい）です。毎週（まいしゅう）金曜日（きんようび）の放課後（ほうかご）に、学校（がっこう）の図書館（としょかん）で日本語（にほんご）の単語（たんご）を復習（ふくしゅう）します。佐藤さんは日本の大学（だいがく）の工学部（こうがくぶ）に関心（かんしん）がありますが、まだ志望校（しぼうこう）は決（き）めていません。"},{"k":"r","d":2,"p":"この文章によると、JLPTはどう言われていますか。","o":["すべての大学の合格を保証する","参考になることがある","もう使われていない","短い練習テストと同じものだ"],"c":1,"e":"JLPTは参考になることがあります — có thể là thông tin tham khảo, không phải bảo đảm đỗ.","s":"日本の大学によって、留学生に求める日本語の基準は違います。JLPTは参考になることがあります。ただし、短い練習テストの点数だけで合格が決まるわけではありません。最新の募集情報は、各大学の公式サイトで確認してください。基準は変わることがあります。"},{"k":"r","d":3,"p":"「合格が決まるわけではありません」に最も近い意味はどれですか。","o":["練習テストの点数だけで合格が決まる。","大学は募集をやめた。","練習テストの点数だけで合格するとは限らない。","公式サイトを見る必要はない。"],"c":2,"e":"〜わけではない phủ định một suy luận: điểm bài luyện ngắn không đồng nghĩa với việc đã đỗ.","s":"日本の大学によって、留学生に求める日本語の基準は違います。JLPTは参考になることがあります。ただし、短い練習テストの点数だけで合格が決まるわけではありません。最新の募集情報は、各大学の公式サイトで確認してください。基準は変わることがあります。"},{"k":"r","d":3,"p":"最新の基準はどこで確認するべきだと書いてありますか。","o":["友人の記憶","短い練習テストの結果","一年前のパンフレットだけ","各大学の公式サイト"],"c":3,"e":"Đoạn yêu cầu xem 各大学の公式サイト vì tiêu chí có thể thay đổi.","s":"日本の大学によって、留学生に求める日本語の基準は違います。JLPTは参考になることがあります。ただし、短い練習テストの点数だけで合格が決まるわけではありません。最新の募集情報は、各大学の公式サイトで確認してください。基準は変わることがあります。"},{"k":"l","d":1,"p":"説明会は何時ですか。","o":["午前十時","正午","午後三時","夜の八時"],"c":0,"e":"午前十時 là 10 giờ sáng.","s":"お知らせします。明日の説明会は午前十時に、三番教室で行います。学生証を持ってきてください。参加できない人は、今日中に事務所へメールしてください。"},{"k":"l","d":1,"p":"どこで行いますか。","o":["図書館","正門","三番教室","食堂"],"c":2,"e":"Địa điểm là 三番教室, phòng học số 3.","s":"お知らせします。明日の説明会は午前十時に、三番教室で行います。学生証を持ってきてください。参加できない人は、今日中に事務所へメールしてください。"},{"k":"l","d":2,"p":"参加できない人は何をしますか。","o":["明日の朝、事務所に電話する","今日中に事務所へメールする","学生証を捨てる","何もしなくてよい"],"c":1,"e":"今日中に事務所へメールしてください — email cho văn phòng trong hôm nay.","s":"お知らせします。明日の説明会は午前十時に、三番教室で行います。学生証を持ってきてください。参加できない人は、今日中に事務所へメールしてください。"},{"k":"l","d":2,"p":"見学の集合場所はどこですか。","o":["三番教室","正門","図書館の中","食堂の前"],"c":1,"e":"集合場所は正門 — tập trung ở cổng chính.","s":"研究室の見学は木曜日の午後二時です。集合場所は正門です。遅れないでください。見学のあと、質問の時間は十五分だけあります。予約していない人は参加できません。"},{"k":"l","d":3,"p":"質問の時間はどのくらいありますか。","o":["十五分","一時間","午後二時までずっと","時間は書いていない"],"c":0,"e":"質問の時間は十五分だけ — chỉ 15 phút hỏi đáp sau buổi tham quan.","s":"研究室の見学は木曜日の午後二時です。集合場所は正門です。遅れないでください。見学のあと、質問の時間は十五分だけあります。予約していない人は参加できません。"},{"k":"l","d":3,"p":"予約していない人はどうなりますか。","o":["正門で待っていれば参加できる","質問の時間だけ参加できる","木曜日の朝に予約できる","参加できない"],"c":3,"e":"予約していない人は参加できません — người chưa đăng ký không được tham gia.","s":"研究室の見学は木曜日の午後二時です。集合場所は正門です。遅れないでください。見学のあと、質問の時間は十五分だけあります。予約していない人は参加できません。"},{"k":"g","d":1,"p":"私は学生___。","o":["ます","です","だます","でしたる"],"c":1,"e":"Danh từ + です là câu khẳng định lịch sự: 私は学生です."},{"k":"g","d":1,"p":"これは私___本です。","o":["の","を","が","へ"],"c":0,"e":"の nối hai danh từ: sách của tôi — 私の本."},{"k":"g","d":2,"p":"昨日、友達___会いました。","o":["を","で","に","へは"],"c":2,"e":"会う đi với に: 友達に会いました."},{"k":"g","d":2,"p":"図書館___本を借りました。","o":["を","が","へ","で"],"c":3,"e":"Nơi diễn ra hành động mượn sách dùng で: 図書館で本を借りました."},{"k":"g","d":3,"p":"日本語が話せる___、毎日練習しています。","o":["ように","ことに","ながら","そうに"],"c":0,"e":"話せるように diễn tả mục tiêu năng lực: luyện mỗi ngày để có thể nói."},{"k":"g","d":3,"p":"雨が降っている___、試合は続きました。","o":["から","ので","のに","とき"],"c":2,"e":"のに nêu sự tương phản: dù trời mưa, trận đấu vẫn tiếp tục."},{"k":"v","d":1,"p":"「図書館」に最も近い説明はどれですか。","o":["電車に乗る場所","本を借りる場所","病気を治す場所","飛行機に乗る場所"],"c":1,"e":"図書館 là nơi mượn sách, không phải nhà ga, bệnh viện hay sân bay."},{"k":"v","d":1,"p":"「大きい」の反対の意味に最も近いのはどれですか。","o":["新しい","高い","小さい","遠い"],"c":2,"e":"反対 của 大きい là 小さい."},{"k":"v","d":2,"p":"「締め切り」に最も近い意味はどれですか。","o":["休みの日","提出の期限","最初のページ","図書館の入口"],"c":1,"e":"締め切り là hạn nộp, không phải ngày nghỉ."},{"k":"v","d":2,"p":"「予約する」の意味はどれですか。","o":["前もって場所や時間を取る","宿題を忘れる","本を破る","試験を中止する"],"c":0,"e":"予約する là đặt trước chỗ hoặc giờ."},{"k":"v","d":3,"p":"「必ずしも安くない」に最も近い意味はどれですか。","o":["いつもとても安い","安いとは限らない","絶対に無料だ","値段がない"],"c":1,"e":"必ずしも〜ない nghĩa là không phải lúc nào cũng vậy: không hẳn là rẻ."},{"k":"v","d":3,"p":"「概要」に最も近い意味はどれですか。","o":["すべてのページの誤字","個人のパスワード","明日の天気","全体の要点"],"c":3,"e":"概要 là khái quát, những ý chính của toàn bộ nội dung."}],[{"k":"r","d":1,"p":"민수는 몇 학년입니까?","o":["중학교 3학년","고등학교 2학년","대학교 1학년","고등학교 1학년"],"c":1,"e":"Câu đầu nói 고등학교 2학년.","s":"민수는 고등학교 2학년입니다. 매주 토요일 오후에 학교 도서관에서 한국어 단어를 복습합니다. 민수는 나중에 한국 대학의 공학 프로그램을 알아보고 싶어 하지만, 아직 학교를 정하지 않았습니다."},{"k":"r","d":1,"p":"민수는 언제 단어를 복습합니까?","o":["매일 아침","금요일 밤","매주 토요일 오후","일요일 오전만"],"c":2,"e":"매주 토요일 오후 là chiều thứ Bảy hằng tuần.","s":"민수는 고등학교 2학년입니다. 매주 토요일 오후에 학교 도서관에서 한국어 단어를 복습합니다. 민수는 나중에 한국 대학의 공학 프로그램을 알아보고 싶어 하지만, 아직 학교를 정하지 않았습니다."},{"k":"r","d":2,"p":"민수에 대한 설명으로 맞는 것은 무엇입니까?","o":["이미 한국 대학의 합격증이 있다.","의학 프로그램을 공부하고 있다.","학교를 이미 정했다.","한국 대학의 공학 프로그램을 알아보고 싶어 한다."],"c":3,"e":"민수는 muốn tìm hiểu chương trình kỹ thuật, và 아직 학교를 정하지 않았습니다.","s":"민수는 고등학교 2학년입니다. 매주 토요일 오후에 학교 도서관에서 한국어 단어를 복습합니다. 민수는 나중에 한국 대학의 공학 프로그램을 알아보고 싶어 하지만, 아직 학교를 정하지 않았습니다."},{"k":"r","d":2,"p":"설명회는 언제 시작합니까?","o":["목요일 저녁 7시","금요일 아침 7시","오늘 오후 5시","다음 달 1일 낮"],"c":0,"e":"Giờ bắt đầu buổi giới thiệu là 목요일 저녁 7시. 오후 5시 là hạn nộp đơn.","s":"다음 달 교환학생 설명회는 목요일 저녁 7시에 시작합니다. 신청은 오늘 오후 5시까지입니다. 신청하지 않은 학생은 들어갈 수 없습니다. 설명회에서는 기숙사와 수강 신청 일정만 안내합니다. 합격이나 장학금을 보장하지는 않습니다."},{"k":"r","d":3,"p":"신청하지 않은 학생은 어떻게 됩니까?","o":["장학금을 받는다.","기숙사에 바로 입주한다.","들어갈 수 없다.","합격이 보장된다."],"c":2,"e":"신청하지 않은 학생은 들어갈 수 없습니다.","s":"다음 달 교환학생 설명회는 목요일 저녁 7시에 시작합니다. 신청은 오늘 오후 5시까지입니다. 신청하지 않은 학생은 들어갈 수 없습니다. 설명회에서는 기숙사와 수강 신청 일정만 안내합니다. 합격이나 장학금을 보장하지는 않습니다."},{"k":"r","d":3,"p":"이 글이 하지 않는 일은 무엇입니까?","o":["설명회 시간과 신청 마감을 알린다.","기숙사와 수강 신청 안내가 있다고 말한다.","신청하지 않으면 들어갈 수 없다고 말한다.","합격과 장학금을 보장한다."],"c":3,"e":"Câu cuối nói rõ buổi này không bảo đảm đỗ hoặc học bổng.","s":"다음 달 교환학생 설명회는 목요일 저녁 7시에 시작합니다. 신청은 오늘 오후 5시까지입니다. 신청하지 않은 학생은 들어갈 수 없습니다. 설명회에서는 기숙사와 수강 신청 일정만 안내합니다. 합격이나 장학금을 보장하지는 않습니다."},{"k":"l","d":1,"p":"안내는 언제입니까?","o":["오늘 오후","내일 오전 아홉 시","일요일 밤","다음 주 월요일"],"c":1,"e":"내일 오전 아홉 시 là 9 giờ sáng ngày mai.","s":"안내합니다. 내일 오전 아홉 시에 이호 교실에서 언어 분반 안내를 합니다. 학생증을 가져오세요. 참석할 수 없으면 오늘 사무실로 이메일을 보내세요."},{"k":"l","d":1,"p":"어디에 갑니까?","o":["도서관","정문","이호 교실","학생회관"],"c":2,"e":"장소는 이호 교실, phòng học số 2.","s":"안내합니다. 내일 오전 아홉 시에 이호 교실에서 언어 분반 안내를 합니다. 학생증을 가져오세요. 참석할 수 없으면 오늘 사무실로 이메일을 보내세요."},{"k":"l","d":2,"p":"무엇을 가져가야 합니까?","o":["학생증","노트북 충전기만","현금","여권 사진 두 장"],"c":0,"e":"학생증을 가져오세요 — hãy mang thẻ sinh viên.","s":"안내합니다. 내일 오전 아홉 시에 이호 교실에서 언어 분반 안내를 합니다. 학생증을 가져오세요. 참석할 수 없으면 오늘 사무실로 이메일을 보내세요."},{"k":"l","d":2,"p":"면접 연습은 어디입니까?","o":["이호 교실","학생회관 이층","도서관 일층","정문 앞"],"c":1,"e":"장소는 학생회관 이층 — tầng 2 nhà hội sinh viên.","s":"한국어 면접 연습은 수요일 오후 네 시입니다. 장소는 학생회관 이층입니다. 질문은 다섯 개이고, 답은 각각 일 분입니다. 예약하지 않은 학생은 참가할 수 없습니다."},{"k":"l","d":3,"p":"답은 각각 얼마나 합니까?","o":["오 분","삼십 초","일 분","시간 제한이 없다"],"c":2,"e":"답은 각각 일 분 — mỗi câu trả lời một phút. Số câu hỏi là năm.","s":"한국어 면접 연습은 수요일 오후 네 시입니다. 장소는 학생회관 이층입니다. 질문은 다섯 개이고, 답은 각각 일 분입니다. 예약하지 않은 학생은 참가할 수 없습니다."},{"k":"l","d":3,"p":"예약하지 않은 학생은 어떻게 됩니까?","o":["오 분만 참가할 수 있다.","수요일 아침에 바로 예약할 수 있다.","질문 하나만 받을 수 있다.","참가할 수 없다."],"c":3,"e":"예약하지 않은 학생은 참가할 수 없습니다.","s":"한국어 면접 연습은 수요일 오후 네 시입니다. 장소는 학생회관 이층입니다. 질문은 다섯 개이고, 답은 각각 일 분입니다. 예약하지 않은 학생은 참가할 수 없습니다."},{"k":"g","d":1,"p":"저는 학생___.","o":["있습니다","합니다","입니다","없습니다"],"c":2,"e":"Danh từ + 입니다 là câu giới thiệu lịch sự: 저는 학생입니다."},{"k":"g","d":1,"p":"어제 영화를 ___.","o":["봤어요","봐요","볼 거예요","보세요"],"c":0,"e":"어제 yêu cầu thì quá khứ: 봤어요."},{"k":"g","d":2,"p":"책이 도서관___ 있어요.","o":["을","에서","으로","에"],"c":3,"e":"있다 chỉ vị trí dùng 에, không dùng 에서."},{"k":"g","d":2,"p":"이 서류는 어제 ___.","o":["제출되었습니다","제출합니다","제출하세요","제출할 거예요"],"c":0,"e":"어제 + bị động hoàn thành: 제출되었습니다."},{"k":"g","d":3,"p":"어렵___ 계속 공부합니다.","o":["어서","으면","지만","으니까"],"c":2,"e":"지만 nối hai ý tương phản: khó nhưng vẫn học tiếp."},{"k":"g","d":3,"p":"시간이 있으면 그 글을 다시 ___.","o":["읽었어요","읽으세요","읽을게요","읽었을게요"],"c":2,"e":"Điều kiện ở hiện tại và ý định của người nói: 읽을게요."},{"k":"v","d":1,"p":"「도서관」의 의미로 가장 가까운 것은 무엇입니까?","o":["역","책을 빌리는 곳","공항","병원"],"c":1,"e":"도서관 là nơi mượn sách, không phải nhà ga hay bệnh viện."},{"k":"v","d":1,"p":"「크다」와 반대에 가장 가까운 말은 무엇입니까?","o":["작다","비싸다","멀다","빠르다"],"c":0,"e":"크다 đối nghĩa gần nhất là 작다."},{"k":"v","d":2,"p":"「마감」에 가장 가까운 의미는 무엇입니까?","o":["시작 시간","쉬는 날","끝나는 기한","첫 페이지"],"c":2,"e":"마감 là hạn kết thúc, không phải giờ bắt đầu."},{"k":"v","d":2,"p":"「신청하다」의 의미는 무엇입니까?","o":["참가나 등록을 요청하다","숙제를 잊어버리다","시험을 취소하다","책을 찢다"],"c":0,"e":"신청하다 là nộp đơn hoặc đăng ký tham gia."},{"k":"v","d":3,"p":"「반드시 싼 것은 아니다」에 가장 가까운 의미는 무엇입니까?","o":["항상 매우 싸다","항상 무료다","싸다고 단정할 수 없다","가격이 없다"],"c":2,"e":"반드시 ~ 것은 아니다 nghĩa là không thể khẳng định chắc là rẻ."},{"k":"v","d":3,"p":"「개요」에 가장 가까운 의미는 무엇입니까?","o":["모든 페이지의 오타","개인 비밀번호","내일의 날씨","전체의 핵심"],"c":3,"e":"개요 là phần khái quát những ý chính."}],[{"k":"r","d":1,"p":"In welcher Klasse ist Anna?","o":["In der 10. Klasse","In der 11. Klasse","An der Universität","Im ersten Semester"],"c":1,"e":"Anna ist Schülerin in der 11. Klasse.","s":"Anna ist Schülerin in der 11. Klasse in Hanoi. Jeden Dienstag übt sie nach der Schule Deutsch in der Bibliothek. Sie möchte später ein Studienkolleg in Deutschland besuchen, hat aber noch keine Hochschule gewählt."},{"k":"r","d":1,"p":"Wann übt Anna Deutsch?","o":["Jeden Montagmorgen","Nur am Sonntag","Jeden Dienstag nach der Schule","Jeden Abend vor dem Frühstück"],"c":2,"e":"Jeden Dienstag nach der Schule — mỗi thứ Ba sau giờ học.","s":"Anna ist Schülerin in der 11. Klasse in Hanoi. Jeden Dienstag übt sie nach der Schule Deutsch in der Bibliothek. Sie möchte später ein Studienkolleg in Deutschland besuchen, hat aber noch keine Hochschule gewählt."},{"k":"r","d":2,"p":"Welche Aussage stimmt?","o":["Anna hat schon eine Hochschule gewählt.","Anna studiert schon Medizin in Berlin.","Anna übt Deutsch im Café.","Anna möchte später ein Studienkolleg besuchen."],"c":3,"e":"Cô ấy muốn học Studienkolleg sau này và chưa chọn trường đại học.","s":"Anna ist Schülerin in der 11. Klasse in Hanoi. Jeden Dienstag übt sie nach der Schule Deutsch in der Bibliothek. Sie möchte später ein Studienkolleg in Deutschland besuchen, hat aber noch keine Hochschule gewählt."},{"k":"r","d":2,"p":"Was ersetzt ein Studienkolleg nicht?","o":["Die Zulassungsentscheidung der Hochschule","Den Deutschunterricht","Die Website der Hochschule","Die Bibliothek"],"c":0,"e":"Es ersetzt nicht die Zulassungsentscheidung — không thay quyết định tuyển sinh của trường.","s":"Ein Studienkolleg bereitet internationale Bewerberinnen und Bewerber auf ein Fachstudium vor. Es ersetzt nicht die Zulassungsentscheidung der Hochschule. Prüfungen wie TestDaF oder das Goethe-Zertifikat können verlangt werden. Die genauen Voraussetzungen stehen auf der Website der jeweiligen Hochschule und können sich ändern."},{"k":"r","d":3,"p":"Was sagt der Text über Sprachprüfungen?","o":["Sie sind überall verboten.","Nur ein kurzer Übungstest zählt.","Sie können verlangt werden.","Das Goethe-Zertifikat garantiert einen Studienplatz."],"c":2,"e":"können verlangt werden — có thể được yêu cầu, không có nghĩa là bảo đảm một suất học.","s":"Ein Studienkolleg bereitet internationale Bewerberinnen und Bewerber auf ein Fachstudium vor. Es ersetzt nicht die Zulassungsentscheidung der Hochschule. Prüfungen wie TestDaF oder das Goethe-Zertifikat können verlangt werden. Die genauen Voraussetzungen stehen auf der Website der jeweiligen Hochschule und können sich ändern."},{"k":"r","d":3,"p":"Wo stehen die genauen Voraussetzungen?","o":["In einem kurzen Übungstest","Nur in Erinnerungen von Freunden","In einem alten Reiseführer","Auf der Website der jeweiligen Hochschule"],"c":3,"e":"Die genauen Voraussetzungen stehen auf der Website der jeweiligen Hochschule.","s":"Ein Studienkolleg bereitet internationale Bewerberinnen und Bewerber auf ein Fachstudium vor. Es ersetzt nicht die Zulassungsentscheidung der Hochschule. Prüfungen wie TestDaF oder das Goethe-Zertifikat können verlangt werden. Die genauen Voraussetzungen stehen auf der Website der jeweiligen Hochschule und können sich ändern."},{"k":"l","d":1,"p":"Wann ist die Sprechstunde?","o":["Heute um acht Uhr","Morgen um zehn Uhr","Am Freitagabend","Nächste Woche"],"c":1,"e":"Morgen um zehn Uhr — ngày mai lúc 10 giờ.","s":"Guten Tag. Die Sprechstunde von Frau Keller ist morgen um zehn Uhr im Raum zwölf. Bitte bringen Sie Ihren Ausweis mit. Wenn Sie den Termin nicht schaffen, schreiben Sie heute eine E-Mail an das Büro."},{"k":"l","d":1,"p":"Wo ist die Sprechstunde?","o":["Im Raum zwölf","In der Bibliothek","Am Haupttor","Im Labor"],"c":0,"e":"Im Raum zwölf — phòng số 12.","s":"Guten Tag. Die Sprechstunde von Frau Keller ist morgen um zehn Uhr im Raum zwölf. Bitte bringen Sie Ihren Ausweis mit. Wenn Sie den Termin nicht schaffen, schreiben Sie heute eine E-Mail an das Büro."},{"k":"l","d":2,"p":"Was soll man mitbringen?","o":["Einen Laptop","Bargeld","Den Ausweis","Ein Wörterbuch"],"c":2,"e":"Bitte bringen Sie Ihren Ausweis mit.","s":"Guten Tag. Die Sprechstunde von Frau Keller ist morgen um zehn Uhr im Raum zwölf. Bitte bringen Sie Ihren Ausweis mit. Wenn Sie den Termin nicht schaffen, schreiben Sie heute eine E-Mail an das Büro."},{"k":"l","d":2,"p":"Wo ist der Treffpunkt?","o":["Raum zwölf","Das Haupttor","Das Café","Die Bibliothek"],"c":1,"e":"Der Treffpunkt ist das Haupttor.","s":"Die Laborführung ist am Donnerstag um vierzehn Uhr. Der Treffpunkt ist das Haupttor. Danach gibt es nur fünfzehn Minuten für Fragen. Ohne Anmeldung ist die Teilnahme nicht möglich."},{"k":"l","d":3,"p":"Wie lange gibt es Zeit für Fragen?","o":["Eine Stunde","Den ganzen Nachmittag","Fünfzehn Minuten","Es gibt keine Fragen."],"c":2,"e":"Danach gibt es nur fünfzehn Minuten für Fragen.","s":"Die Laborführung ist am Donnerstag um vierzehn Uhr. Der Treffpunkt ist das Haupttor. Danach gibt es nur fünfzehn Minuten für Fragen. Ohne Anmeldung ist die Teilnahme nicht möglich."},{"k":"l","d":3,"p":"Was gilt ohne Anmeldung?","o":["Die Teilnahme ist nicht möglich.","Man darf fünf Minuten bleiben.","Man kann am Tor bezahlen.","Die Führung wird kostenlos verlängert."],"c":0,"e":"Ohne Anmeldung ist die Teilnahme nicht möglich.","s":"Die Laborführung ist am Donnerstag um vierzehn Uhr. Der Treffpunkt ist das Haupttor. Danach gibt es nur fünfzehn Minuten für Fragen. Ohne Anmeldung ist die Teilnahme nicht möglich."},{"k":"g","d":1,"p":"Ich ___ Schülerin.","o":["bin","bist","seid","sind"],"c":0,"e":"Ngôi ich đi với bin."},{"k":"g","d":1,"p":"Das Heft liegt ___ dem Tisch.","o":["auf","nach","aus","seit"],"c":0,"e":"auf dem Tisch — auf đi với cách 3 khi nói vị trí."},{"k":"g","d":2,"p":"Gestern ___ wir Deutsch gelernt.","o":["sind","werden","haben","wart"],"c":2,"e":"gelernt là phân từ hai của lernen, thì quá khứ hoàn thành dùng haben."},{"k":"g","d":2,"p":"Wenn ich mehr Zeit ___, würde ich den Text noch einmal lesen.","o":["habe","hatte","habt","hätte"],"c":3,"e":"Câu điều kiện giả định: hätte … würde ich."},{"k":"g","d":3,"p":"Die E-Mail ___ gestern gesendet.","o":["wurde","hat","wird","war"],"c":0,"e":"Bị động quá khứ: wurde gesendet."},{"k":"g","d":3,"p":"Ich lerne Deutsch, ___ ich später in Deutschland studieren möchte.","o":["denn","weil","oder","aber"],"c":1,"e":"Động từ möchte đứng cuối câu nên liên từ đúng là weil, không phải denn."},{"k":"v","d":1,"p":"Was bedeutet „Bibliothek“?","o":["Bahnhof","Ort, an dem man Bücher ausleiht","Flughafen","Krankenhaus"],"c":1,"e":"Bibliothek là thư viện, nơi mượn sách."},{"k":"v","d":1,"p":"Was ist das Gegenteil von „teuer“?","o":["billig","schnell","laut","weit"],"c":0,"e":"Gegenteil của teuer là billig."},{"k":"v","d":2,"p":"Was bedeutet „die Frist“?","o":["Ein Feiertag","Die erste Seite","Ein Zeitpunkt, bis zu dem etwas erledigt sein muss","Eine Pause"],"c":2,"e":"Die Frist là thời hạn phải xong việc."},{"k":"v","d":2,"p":"Was bedeutet „sich bewerben“?","o":["Eine Bewerbung abgeben","Eine Prüfung absagen","Ein Buch zerreißen","Die Hausaufgaben vergessen"],"c":0,"e":"sich bewerben nghĩa là nộp đơn ứng tuyển."},{"k":"v","d":3,"p":"„Die Ergebnisse sind vorläufig“ bedeutet …","o":["Die Ergebnisse sind endgültig.","Die Ergebnisse sind früh und noch nicht endgültig.","Die Ergebnisse gehören zu einer anderen Studie.","Es gibt keine Ergebnisse."],"c":1,"e":"vorläufig nghĩa là tạm thời, chưa phải kết luận cuối."},{"k":"v","d":3,"p":"Was ist eine „Vorlesung“?","o":["Eine schriftliche Prüfung","Ein Studentenausweis","Eine Mensa","Eine Lehrveranstaltung, in der meist vorgetragen wird"],"c":3,"e":"Eine Vorlesung là buổi giảng trên lớp, không phải bài thi viết."}],[{"k":"r","d":1,"p":"林晓是几年级的学生？","o":["高一","高二","大一","初三"],"c":1,"e":"Câu đầu nói 林晓是高二学生.","s":"林晓是高二学生。她每周四晚上在学校图书馆自学中文词汇。她想了解中国大学的预科信息，但还没有选定学校。"},{"k":"r","d":1,"p":"她什么时候自学词汇？","o":["每天早上","周六下午","每周四晚上","周日中午"],"c":2,"e":"每周四晚上 là tối thứ Năm hằng tuần.","s":"林晓是高二学生。她每周四晚上在学校图书馆自学中文词汇。她想了解中国大学的预科信息，但还没有选定学校。"},{"k":"r","d":2,"p":"下面哪一句符合文章？","o":["她已经选定了中国的大学。","她在医院工作。","她只在周日学习。","她想了解中国大学的预科信息。"],"c":3,"e":"Cô ấy muốn tìm hiểu thông tin dự bị, nhưng chưa chọn trường.","s":"林晓是高二学生。她每周四晚上在学校图书馆自学中文词汇。她想了解中国大学的预科信息，但还没有选定学校。"},{"k":"r","d":2,"p":"文章怎么说明 HSK 成绩？","o":["可以保证被任何大学录取","有时可以作参考","已经不再使用","和短练习测试完全一样"],"c":1,"e":"HSK 成绩有时可以作参考, nhưng không thay quyết định tuyển sinh.","s":"各大学对国际学生的中文要求并不相同。HSK 成绩有时可以作参考，但不能代替学校自己的录取决定。短时间的练习测试也不能当作官方要求。最新标准应以各校官网为准，而且可能调整。"},{"k":"r","d":3,"p":"“不能代替学校自己的录取决定”是什么意思？","o":["练习测试可以决定录取。","学校不再招生。","是否录取仍由学校决定。","官网上的信息都不重要。"],"c":2,"e":"Không thay thế nghĩa là trường vẫn tự quyết định có nhận hay không.","s":"各大学对国际学生的中文要求并不相同。HSK 成绩有时可以作参考，但不能代替学校自己的录取决定。短时间的练习测试也不能当作官方要求。最新标准应以各校官网为准，而且可能调整。"},{"k":"r","d":3,"p":"最新标准应该看哪里？","o":["同学的记忆","一份旧宣传单","一次短练习测试","各校官网"],"c":3,"e":"最新标准应以各校官网为准, và có thể được điều chỉnh.","s":"各大学对国际学生的中文要求并不相同。HSK 成绩有时可以作参考，但不能代替学校自己的录取决定。短时间的练习测试也不能当作官方要求。最新标准应以各校官网为准，而且可能调整。"},{"k":"l","d":1,"p":"分班说明是什么时候？","o":["今天下午","明天上午九点","周日晚上","下个月"],"c":1,"e":"明天上午九点 là 9 giờ sáng ngày mai.","s":"同学们注意。明天上午九点在二号教室做语言分班说明。请带学生证。如果不能参加，请今天给办公室发邮件，不要等到明天早上。"},{"k":"l","d":1,"p":"在哪里进行？","o":["图书馆","学校正门","二号教室","食堂"],"c":2,"e":"二号教室 là phòng học số 2.","s":"同学们注意。明天上午九点在二号教室做语言分班说明。请带学生证。如果不能参加，请今天给办公室发邮件，不要等到明天早上。"},{"k":"l","d":2,"p":"不能参加时应该怎么做？","o":["等到明天早上再说","给图书馆打电话","今天给办公室发邮件","什么都不用做"],"c":2,"e":"请今天给办公室发邮件，不要等到明天早上.","s":"同学们注意。明天上午九点在二号教室做语言分班说明。请带学生证。如果不能参加，请今天给办公室发邮件，不要等到明天早上。"},{"k":"l","d":2,"p":"参观在哪里集合？","o":["二号教室","学校正门","食堂门口","图书馆里面"],"c":1,"e":"集合地点是学校正门.","s":"实验室参观是星期四下午两点。集合地点是学校正门。参观之后只有十五分钟提问。没有预约的同学不能参加。"},{"k":"l","d":3,"p":"提问时间有多长？","o":["一个小时","整个下午","十五分钟","没有提问时间"],"c":2,"e":"参观之后只有十五分钟提问.","s":"实验室参观是星期四下午两点。集合地点是学校正门。参观之后只有十五分钟提问。没有预约的同学不能参加。"},{"k":"l","d":3,"p":"没有预约的同学会怎样？","o":["可以只提问","可以在门口付钱参加","星期四早上还能预约","不能参加"],"c":3,"e":"没有预约的同学不能参加.","s":"实验室参观是星期四下午两点。集合地点是学校正门。参观之后只有十五分钟提问。没有预约的同学不能参加。"},{"k":"g","d":1,"p":"我___学生。","o":["是","在","有","被"],"c":0,"e":"我是学生 dùng 是 để nối danh từ."},{"k":"g","d":1,"p":"昨天我们___了一部电影。","o":["看","在","对","比"],"c":0,"e":"看电影 là cụm đúng. 了 đánh dấu việc đã xảy ra."},{"k":"g","d":2,"p":"书在桌子___。","o":["了","上","得","过"],"c":1,"e":"在桌子上 chỉ vị trí phía trên mặt bàn."},{"k":"g","d":2,"p":"如果有时间，我___再读一遍。","o":["会","被","比","从"],"c":0,"e":"如果 có thời gian thì 会 diễn tả việc sẽ làm."},{"k":"g","d":3,"p":"虽然下雨，比赛___继续进行。","o":["因为","所以","还是","为了"],"c":2,"e":"虽然 … 还是 … diễn tả tương phản: dù mưa trận đấu vẫn tiếp tục."},{"k":"g","d":3,"p":"他不但完成了作业，___帮助了同学。","o":["或者","虽然","除了","而且"],"c":3,"e":"不但 … 而且 … nối hai ý bổ sung cho nhau."},{"k":"v","d":1,"p":"“图书馆”最接近的意思是？","o":["火车站","可以借书的地方","机场","医院"],"c":1,"e":"图书馆 là nơi mượn sách."},{"k":"v","d":1,"p":"“大”的反义词最接近哪一个？","o":["小","贵","远","快"],"c":0,"e":"大 đối nghĩa là 小."},{"k":"v","d":2,"p":"“截止日期”是什么意思？","o":["开始的第一天","放假的日子","必须完成的最后期限","书的第一页"],"c":2,"e":"截止日期 là hạn cuối phải hoàn thành."},{"k":"v","d":2,"p":"“申请”最接近的意思是？","o":["提出参加或入学的请求","忘记作业","取消考试","撕掉课本"],"c":0,"e":"申请 là nộp đơn xin tham gia hoặc nhập học."},{"k":"v","d":3,"p":"“初步结果”最接近的意思是？","o":["已经最终确定的结果","还不是最后结论的早期结果","跟研究无关的内容","抄来的密码"],"c":1,"e":"初步 nghĩa là bước đầu, chưa phải kết luận cuối."},{"k":"v","d":3,"p":"“录取”在招生语境中最接近的意思是？","o":["保证获得签证","学校放假","取消所有考试","学校决定接收申请人"],"c":3,"e":"录取 là trường quyết định nhận người nộp đơn, không đồng nghĩa với việc đã có visa."}],[{"k":"r","d":1,"p":"Dans quelle classe est Inès ?","o":["En seconde","En classe de première","À l'université","En sixième"],"c":1,"e":"Inès est en classe de première.","s":"Inès est en classe de première à Hanoï. Le mercredi, elle révise le vocabulaire français à la bibliothèque. Elle veut préparer un diplôme universitaire en France, mais elle n'a pas encore choisi d'établissement."},{"k":"r","d":1,"p":"Quand révise-t-elle le vocabulaire ?","o":["Le lundi matin","Tous les soirs","Le mercredi","Seulement le dimanche"],"c":2,"e":"Le mercredi, elle révise le vocabulaire.","s":"Inès est en classe de première à Hanoï. Le mercredi, elle révise le vocabulaire français à la bibliothèque. Elle veut préparer un diplôme universitaire en France, mais elle n'a pas encore choisi d'établissement."},{"k":"r","d":2,"p":"Quelle phrase est correcte ?","o":["Elle a déjà choisi son établissement.","Elle travaille dans un hôpital.","Elle révise au café.","Elle veut préparer un diplôme universitaire en France."],"c":3,"e":"Cô ấy muốn chuẩn bị một bằng đại học ở Pháp và chưa chọn trường.","s":"Inès est en classe de première à Hanoï. Le mercredi, elle révise le vocabulaire français à la bibliothèque. Elle veut préparer un diplôme universitaire en France, mais elle n'a pas encore choisi d'établissement."},{"k":"r","d":2,"p":"Que peut faire une année préparatoire ?","o":["Remplacer la décision d'admission","Aider, sans garantir l'admission","Supprimer toutes les règles","Donner automatiquement un visa"],"c":1,"e":"Une année préparatoire peut aider, mais elle ne remplace pas la décision d'admission.","s":"Les universités peuvent demander aux candidats internationaux de suivre des cours, de lire des textes et d'écrire des arguments clairs. Une année préparatoire peut aider, mais elle ne remplace pas la décision d'admission. Un court test d'entraînement n'est pas une exigence officielle. Il faut vérifier le site actuel de chaque établissement, car les règles changent."},{"k":"r","d":3,"p":"Quel est l'avertissement principal ?","o":["Les cours ne servent à rien.","Il ne faut jamais vérifier un site.","Un court test d'entraînement n'est pas une exigence officielle.","Toutes les universités ont les mêmes règles."],"c":2,"e":"Đoạn nói bài luyện ngắn không phải yêu cầu chính thức, và phải xem website hiện tại của từng trường.","s":"Les universités peuvent demander aux candidats internationaux de suivre des cours, de lire des textes et d'écrire des arguments clairs. Une année préparatoire peut aider, mais elle ne remplace pas la décision d'admission. Un court test d'entraînement n'est pas une exigence officielle. Il faut vérifier le site actuel de chaque établissement, car les règles changent."},{"k":"r","d":3,"p":"Pourquoi faut-il vérifier le site de chaque établissement ?","o":["Parce que les règles changent.","Parce que le test d'entraînement est officiel.","Parce que l'année préparatoire décide de l'admission.","Parce que les sites sont tous identiques."],"c":0,"e":"car les règles changent — quy định có thể thay đổi.","s":"Les universités peuvent demander aux candidats internationaux de suivre des cours, de lire des textes et d'écrire des arguments clairs. Une année préparatoire peut aider, mais elle ne remplace pas la décision d'admission. Un court test d'entraînement n'est pas une exigence officielle. Il faut vérifier le site actuel de chaque établissement, car les règles changent."},{"k":"l","d":1,"p":"La réunion commence quand ?","o":["Jeudi à dix-huit heures","Vendredi matin","Dimanche soir","Aujourd'hui à midi"],"c":0,"e":"Jeudi à dix-huit heures — thứ Năm lúc 18 giờ.","s":"Bonjour. La réunion d'information commence jeudi à dix-huit heures dans la salle B. Apportez une pièce d'identité. Si vous ne pouvez pas venir, écrivez aujourd'hui au secrétariat."},{"k":"l","d":1,"p":"Où a lieu la réunion ?","o":["À la bibliothèque","Dans la salle B","Au laboratoire","À l'entrée principale"],"c":1,"e":"Dans la salle B.","s":"Bonjour. La réunion d'information commence jeudi à dix-huit heures dans la salle B. Apportez une pièce d'identité. Si vous ne pouvez pas venir, écrivez aujourd'hui au secrétariat."},{"k":"l","d":2,"p":"Que faut-il apporter ?","o":["Un ordinateur","De l'argent","Une pièce d'identité","Un dictionnaire"],"c":2,"e":"Apportez une pièce d'identité.","s":"Bonjour. La réunion d'information commence jeudi à dix-huit heures dans la salle B. Apportez une pièce d'identité. Si vous ne pouvez pas venir, écrivez aujourd'hui au secrétariat."},{"k":"l","d":2,"p":"Où est le rendez-vous ?","o":["Salle B","À l'entrée principale","Au café","À la bibliothèque"],"c":1,"e":"Le rendez-vous est à l'entrée principale.","s":"La visite du laboratoire est vendredi à quatorze heures. Le rendez-vous est à l'entrée principale. Ensuite, il n'y a que quinze minutes pour les questions. Sans inscription, la participation n'est pas possible."},{"k":"l","d":3,"p":"Combien de temps y a-t-il pour les questions ?","o":["Une heure","Tout l'après-midi","Quinze minutes","Il n'y a pas de questions."],"c":2,"e":"Il n'y a que quinze minutes pour les questions.","s":"La visite du laboratoire est vendredi à quatorze heures. Le rendez-vous est à l'entrée principale. Ensuite, il n'y a que quinze minutes pour les questions. Sans inscription, la participation n'est pas possible."},{"k":"l","d":3,"p":"Que se passe-t-il sans inscription ?","o":["On peut rester cinq minutes.","On paie à l'entrée.","La visite devient plus longue.","La participation n'est pas possible."],"c":3,"e":"Sans inscription, la participation n'est pas possible.","s":"La visite du laboratoire est vendredi à quatorze heures. Le rendez-vous est à l'entrée principale. Ensuite, il n'y a que quinze minutes pour les questions. Sans inscription, la participation n'est pas possible."},{"k":"g","d":1,"p":"Je ___ étudiante.","o":["es","suis","est","sommes"],"c":1,"e":"Ngôi je dùng suis."},{"k":"g","d":1,"p":"Le livre est ___ la table.","o":["sur","dans","chez","pendant"],"c":0,"e":"sur la table nghĩa là ở trên bàn."},{"k":"g","d":2,"p":"Hier, nous ___ au cours.","o":["allons","irons","sommes allés","aller"],"c":2,"e":"Hier yêu cầu quá khứ: nous sommes allés."},{"k":"g","d":2,"p":"Si j'___ le temps, je relirais la consigne.","o":["ai","avais","aurai","aie"],"c":1,"e":"Si + imparfait (avais) đi với conditionnel (relirais)."},{"k":"g","d":3,"p":"La lettre ___ envoyée hier.","o":["a été","est","a","avait"],"c":0,"e":"Bị động quá khứ: a été envoyée."},{"k":"g","d":3,"p":"Bien qu'il ___, le cours a continué.","o":["pleut","pleuvra","pleuve","plu"],"c":2,"e":"Bien que đi với thức giả định: il pleuve."},{"k":"v","d":1,"p":"Que signifie « bibliothèque » ?","o":["Une gare","Un endroit où l'on emprunte des livres","Un aéroport","Un hôpital"],"c":1,"e":"Une bibliothèque là nơi mượn sách."},{"k":"v","d":1,"p":"Quel est le contraire de « cher » ?","o":["bon marché","rapide","bruyant","loin"],"c":0,"e":"Cher đối nghĩa với bon marché trong ngữ cảnh giá cả."},{"k":"v","d":2,"p":"Dans un contexte universitaire, « une bourse » signifie surtout…","o":["Un sac à main","Une aide financière pour étudier","Une salle de classe","Un examen oral"],"c":1,"e":"Trong ngữ cảnh học đường, une bourse thường là học bổng, không phải cái túi."},{"k":"v","d":2,"p":"« Déposer un dossier » signifie…","o":["Annuler un examen","Oublier les devoirs","Remettre une candidature","Déchirer un livre"],"c":2,"e":"Déposer un dossier là nộp hồ sơ ứng tuyển."},{"k":"v","d":3,"p":"« Toutefois » est proche de…","o":["par exemple","ensuite","toujours","cependant"],"c":3,"e":"Toutefois gần nghĩa với cependant: tuy nhiên."},{"k":"v","d":3,"p":"« Les résultats sont provisoires » signifie que les résultats…","o":["sont définitifs","sont encore précoces et non définitifs","concernent une autre étude","n'existent pas"],"c":1,"e":"Provisoire nghĩa là tạm thời, chưa phải kết quả cuối."}]];
-const SK={reading:"Đọc",listening:"Nghe",grammar:"Ngữ pháp",vocabulary:"Từ vựng"},SKM={r:"reading",l:"listening",g:"grammar",v:"vocabulary"},TTS=["en-US","ja-JP","ko-KR","de-DE","zh-CN","fr-FR"],CODE=["en","ja","ko","de","zh","fr"],DIF=["","Dễ","Vừa","Khó"],W={1:1,2:1.6,3:2.4},R=["A1","A2","B1","B2","C1","C2"];
-const PR={reading:"Đọc thấp hơn các kỹ năng khách quan khác trong bài này. Nên đọc lại các đoạn đã sai và đối chiếu vì sao đáp án đúng.",listening:"Nghe thấp hơn các kỹ năng khách quan khác trong bài này. Nên nghe lại đoạn ngắn, ghi ý chính, rồi mới trả lời.",grammar:"Ngữ pháp thấp hơn các kỹ năng khách quan khác trong bài này. Nên ôn đúng mẫu câu đã làm sai trước khi tăng độ khó.",vocabulary:"Từ vựng thấp hơn các kỹ năng khách quan khác trong bài này. Nên học lại từ và cụm từ trong các câu đã làm sai."};
-let cur={},mem=[];
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
-const lo=(a,b)=>R.indexOf(a)<=R.indexOf(b)?a:b;
-function stop(){try{speechSynthesis.cancel()}catch(e){}}
-function show(i){stop();cur={i:i,n:0,a:[]};li.innerHTML='<p class="eyebrow">Bài xếp lớp · '+L[i][2]+'</p><h3 style="font-size:21px;margin-top:6px">24 câu · Đọc, Nghe, Ngữ pháp, Từ vựng</h3><p class="muted" style="margin-top:6px;font-size:15px">Chấm đúng theo luật ở phần bên dưới. Câu Nghe đọc bằng giọng máy của trình duyệt; mở phụ đề thì câu đó không tính điểm. Phần Nói và Viết (tự chọn, không tính vào CEFR) có trong ứng dụng đầy đủ.</p><button class="btn" id="go" style="margin-top:14px">Bắt đầu làm bài</button>';document.getElementById("go").onclick=ask}
-function ask(){stop();const qs=DATA[cur.i],q=qs[cur.n],k=SKM[q.k],lg=CODE[cur.i];cur.sel=null;cur.played=false;cur.shown=false;
-let t='<p class="eyebrow">Câu '+(cur.n+1)+'/'+qs.length+' · '+SK[k]+' · '+DIF[q.d]+'</p><div class="pbar"><i style="width:'+(cur.n/qs.length*100)+'%"></i></div>';
-if(k==="listening")t+='<div class="lrow"><button class="tab" id="pl">▶ Nghe</button><button class="tab" id="tr">Hiện phụ đề</button></div><p class="stim" id="st" lang="'+lg+'" hidden>'+esc(q.s)+'</p><p class="fb muted" id="fb" style="margin-top:8px;font-size:14px"></p>';
-else if(q.s)t+='<p class="stim" lang="'+lg+'">'+esc(q.s)+'</p>';
-t+='<p class="qp" lang="'+lg+'">'+esc(q.p)+'</p>'+q.o.map((x,j)=>'<button class="opt" data-j="'+j+'" lang="'+lg+'">'+esc(x)+'</button>').join("")+'<div class="lrow"><button class="btn" id="nx" disabled>'+(cur.n+1<qs.length?"Câu tiếp":"Xem kết quả")+'</button></div>';
-li.innerHTML=t;
-li.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{cur.sel=+b.dataset.j;li.querySelectorAll(".opt").forEach(e=>e.classList.toggle("sel",e===b));document.getElementById("nx").disabled=false});
-if(k==="listening"){
-document.getElementById("pl").onclick=()=>{if(!window.speechSynthesis){cur.shown=true;document.getElementById("st").hidden=false;document.getElementById("fb").textContent="Trình duyệt không có giọng máy nên đã hiện phụ đề. Câu này không tính điểm.";return}
-stop();const u=new SpeechSynthesisUtterance(q.s);u.lang=TTS[cur.i];speechSynthesis.speak(u);cur.played=true};
-document.getElementById("tr").onclick=()=>{cur.shown=true;document.getElementById("st").hidden=false;document.getElementById("fb").textContent="Đã mở phụ đề: câu này không tính điểm."}}
-document.getElementById("nx").onclick=()=>{stop();cur.a.push({s:k,d:q.d,ok:cur.sel===q.c,t:k==="listening"&&(cur.shown||!cur.played),n:cur.n});cur.n++;cur.n<qs.length?ask():fin()}}
-function fin(){const qs=DATA[cur.i],a=cur.a,c=a.filter(x=>!(x.s==="listening"&&x.t)),ru=[];let E=0,M=0;const sc={};
-Object.values(SKM).forEach(s=>{const it=c.filter(x=>x.s===s);if(!it.length)return;let e=0,m=0;it.forEach(x=>{m+=W[x.d];if(x.ok)e+=W[x.d]});E+=e;M+=m;sc[s]=Math.round(e/m*100)});
-const ex=a.length-c.length;if(ex)ru.push(ex+" câu Nghe không tính vì đã mở phụ đề hoặc không nghe bằng giọng máy.");
-const raw=M?E/M*100:0;let prov="C2";for(const b of B){if(raw<b[1]){prov=b[0];break}}
-ru.push(M?"Điểm tổng có trọng số "+raw.toFixed(1).replace(".",",")+"% (câu dễ ×1, câu vừa ×1,6, câu khó ×2,4). Mức tạm trước khi áp trần: "+prov+".":"Không có câu khách quan nào được tính. Mức hiển thị mặc định là A1.");
-const ac=d=>{const it=c.filter(x=>x.d===d);return it.length?{r:it.filter(x=>x.ok).length/it.length,n:it.length,k:it.filter(x=>x.ok).length}:null},P=r=>Math.round(r*100)+"%",d1=ac(1),d2=ac(2),d3=ac(3);let ce="C2";
-if(d1){if(d1.r<.5){ce=lo(ce,"A1");ru.push("Câu dễ đúng "+P(d1.r)+", dưới 50%. Trần mức còn A1 vì nền tảng chưa vững.")}else if(d1.r<.75){ce=lo(ce,"A2");ru.push("Câu dễ đúng "+P(d1.r)+", dưới 75%. Trần mức còn A2.")}}
-if(d2){if(d2.r<.4){ce=lo(ce,"A2");ru.push("Câu vừa đúng "+P(d2.r)+", dưới 40%. Trần mức còn A2.")}else if(d2.r<.6){ce=lo(ce,"B1");ru.push("Câu vừa đúng "+P(d2.r)+", dưới 60%. Trần mức còn B1.")}}
-if(d3){if(d3.k<2||d3.r<.34){ce=lo(ce,"B1");ru.push("Câu khó đúng "+d3.k+"/"+d3.n+" ("+P(d3.r)+"). Dưới 2 câu đúng hoặc dưới 34% nên trần mức còn B1. C1/C2 cần bằng chứng ở câu khó.")}else if(d3.r<.5){ce=lo(ce,"B2");ru.push("Câu khó đúng "+P(d3.r)+", dưới 50%. Trần mức còn B2.")}else if(d3.r<.75){ce=lo(ce,"C1");ru.push("Câu khó đúng "+P(d3.r)+", dưới 75%. Trần mức còn C1.")}}
-const cefr=M?lo(prov,ce):"A1";
-if(M)ru.push(cefr!==prov?"Mức tạm "+prov+" bị hạ xuống "+cefr+" vì trần bằng chứng.":"Không có trần nào thấp hơn mức tạm. Kết quả giữ ở "+cefr+".");
-if(d1&&d3&&((d1.r<.5&&d3.r>=.75)||(d3.r<.25&&d1.r>=.9)))ru.push("Các mức độ khó không đồng nhất. Ước lượng lấy mức thấp hơn, không lấy mức cao hơn.");
-const ks=Object.keys(sc),vs=ks.map(k=>sc[k]),mn=Math.min(...vs),even=ks.length&&Math.max(...vs)===mn,weak=ks.filter(k=>sc[k]===mn);
-const pri=(even||!ks.length)?'<p class="muted">Các kỹ năng khách quan đang ngang nhau, hoặc chưa đủ câu được tính. Chưa nên dồn toàn bộ thời gian vào một kỹ năng chỉ vì bài ngắn này.</p>':weak.map(k=>'<p class="muted"><b>'+SK[k]+'.</b> '+PR[k]+'</p>').join("");
-const wrong=a.filter(x=>!x.ok);
-li.innerHTML='<p class="eyebrow">Kết quả · '+L[cur.i][2]+'</p><div class="res"><b>'+cefr+'</b><span style="font-weight:600">'+B[R.indexOf(cefr)][2]+'</span><span class="muted">Tổng điểm có trọng số: '+Math.round(raw)+'%</span></div>'
-+ks.map(k=>'<div class="sk"><span>'+SK[k]+'</span><div class="pbar"><i style="width:'+sc[k]+'%"></i></div><b>'+sc[k]+'%</b></div>').join("")
-+'<h3 style="margin-top:18px">Việc nên ưu tiên</h3>'+pri+'<h3 style="margin-top:14px">Luật chấm đã áp dụng</h3><ul>'+ru.map(x=>'<li>'+x+'</li>').join("")+'</ul>'
-+(wrong.length?'<details><summary>Xem lại '+wrong.length+' câu sai</summary><ul>'+wrong.map(x=>{const q=qs[x.n];return '<li><span lang="'+CODE[cur.i]+'">'+esc(q.p)+'</span> — Đáp án đúng: <b lang="'+CODE[cur.i]+'">'+esc(q.o[q.c])+'</b>. '+esc(q.e)+'</li>'}).join("")+'</ul></details>':'')
-+'<div class="lrow"><button class="btn" id="again">Làm lại</button><button class="btn o" id="oth">Chọn ngôn ngữ khác</button></div>';
-document.getElementById("again").onclick=()=>show(cur.i);document.getElementById("oth").onclick=()=>lg.scrollIntoView();
-const rec={l:L[cur.i][2],c:cefr,o:Math.round(raw),t:Date.now()};mem.push(rec);try{const hh=JSON.parse(localStorage.getItem("lp_hist")||"[]");hh.push(rec);localStorage.setItem("lp_hist",JSON.stringify(hh.slice(-20)))}catch(e){}
-hist();li.scrollIntoView({block:"start"})}
-function getH(){try{return JSON.parse(localStorage.getItem("lp_hist")||"[]")}catch(e){return mem}}
-function hist(){const H=getH(),el=document.getElementById("hist");if(!H.length){el.hidden=true;return}el.hidden=false;
-el.innerHTML='<p class="eyebrow">Lịch sử bài làm</p><p class="muted" style="font-size:14px">Lưu trên trình duyệt này. Cần ít nhất hai bài cùng ngôn ngữ thì mới so được tổng điểm.</p><ul style="margin:10px 0 0;padding-left:18px">'+H.map((x,i)=>{const pv=H.slice(0,i).filter(y=>y.l===x.l).pop(),d=pv?x.o-pv.o:null;return '<li>'+new Date(x.t).toLocaleDateString("vi-VN")+' · '+x.l+' · <b>'+x.c+'</b> · '+x.o+'%'+(pv?' · '+(d>=0?"+":"")+d+' điểm so với lần trước':'')+'</li>'}).reverse().join("")+'</ul>'}
-show(0);hist();
-const B=[["A1",25,"Sơ cấp","#6b7a99"],["A2",42,"Cơ bản","#3e8e7e"],["B1",58,"Trung cấp","#2f7bd0"],["B2",74,"Trung cấp trên","#6a5acd"],["C1",88,"Cao cấp","#c2410c"],["C2",100,"Thành thạo","#b4236b"]];
-const bar=document.getElementById("bar");let prev=0;
-B.forEach(b=>{const d=document.createElement("div");d.style.cssText="flex:"+(b[1]-prev)+";background:"+b[3];d.textContent=b[0];prev=b[1];bar.appendChild(d)});
-const rng=document.getElementById("rng");
-function upd(){const v=+rng.value;let k=B.findIndex(b=>v<b[1]);if(k<0)k=5;
-document.getElementById("band").textContent=B[k][0];document.getElementById("bandVi").textContent=B[k][2];document.getElementById("pct").textContent="Tổng điểm có trọng số: "+v+"%";
-[...bar.children].forEach((d,i)=>d.classList.toggle("on",i===k))}rng.oninput=upd;upd();
-const C=[["Nền tảng","Mẫu câu thường gặp, từ cốt lõi, nghe thông báo ngắn, phát âm từng cụm."],["Phát triển ngôn ngữ","Đọc đoạn ngắn, nghe ý chính, nói được vài câu liên tiếp, viết câu nối."]],E=["Làm quen chứng chỉ","Xem cấu trúc bài thi trên trang chính thức, làm bài tập ngắn, ghi phần đang yếu. Không dự đoán điểm."],F=["Ôn trước mốc thời gian","Làm lại phần yếu, xem lại lỗi cũ, chỉnh lịch nếu tuần bị trễ. Không phải đề thi thử có giám khảo."];
-const S={study:[...C,["Ngôn ngữ học thuật","Từ học thuật, đoạn nêu ý kiến, nghe bài giảng ngắn, nói một ý có ví dụ."],E,F],career:[...C,["Ngôn ngữ chỗ làm","Từ nghề nghiệp, email xác nhận việc, hội thoại giao ca. Không cam kết việc làm."],E,F]};
-const st=document.getElementById("stages");
-function ren(p){st.innerHTML=S[p].map(s=>'<div class="card stage"><div><h3>'+s[0]+'</h3><p class="muted" style="font-size:14px">'+s[1]+'</p></div></div>').join("")}ren("study");
-document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{document.querySelectorAll(".tab").forEach(e=>{e.classList.remove("on");e.setAttribute("aria-pressed","false")});t.classList.add("on");t.setAttribute("aria-pressed","true");ren(t.dataset.p)});
-const D=[["Tổng quan","Bảng học mang tên bạn, gom mức hiện tại và việc cần làm tiếp."],["Bài hôm nay","Các việc của ngày, kèm danh sách việc đã qua mà chưa làm."],["Hướng đi","Đặt hai hướng du học và nghề nghiệp cạnh nhau, từ một bài xếp lớp."],["Luyện tập","Câu luyện theo kỹ năng và đề Nói để tự luyện."],["Tiến độ","So tổng điểm giữa các bài cùng ngôn ngữ; cần ít nhất hai bài. Có danh sách bài đã lưu."],["Chứng chỉ","Danh sách chứng chỉ theo ngôn ngữ, và cho biết chứng chỉ nào đang nằm trong lộ trình."],["Thư viện nguồn","Nguồn tham khảo để bạn xem và lưu lại."],["Cố vấn mô phỏng","Trả lời dựa trên lộ trình và dữ liệu học trên máy này."],["Cài đặt","Tên hiển thị, số phút và ngày học mỗi tuần."]];
-const dsh=document.getElementById("dash");dsh.innerHTML=D.map((d,i)=>'<button class="card dc" data-i="'+i+'"><h3>'+d[0]+'</h3><p>'+d[1]+'</p></button>').join("")+'<div class="card note" id="dd" style="grid-column:1/-1" aria-live="polite">Bấm vào một mục để xem chi tiết.</div>';
-dsh.querySelectorAll(".dc").forEach(b=>b.onclick=()=>{dsh.querySelectorAll(".dc").forEach(e=>e.classList.toggle("on",e===b));const i=+b.dataset.i;document.getElementById("dd").innerHTML='<h3>'+D[i][0]+'</h3><p style="color:var(--ink)">'+D[i][1]+'</p><p class="muted" style="font-size:14px;margin-top:6px">'+(i===4?"Thử ngay: làm bài xếp lớp ở phần Ngôn ngữ, lịch sử và mức thay đổi sẽ hiện ngay dưới phần làm bài.":"Mục này có trong ứng dụng đầy đủ; trang giới thiệu này chưa chạy được mục này.")+'</p>'+(i===4?'<a class="btn o" style="margin-top:10px" href="#languages">Tới phần làm bài</a>':"")});
+const L = [["English","English","Tiếng Anh"],["日本語","Japanese","Tiếng Nhật"],["한국어","Korean","Tiếng Hàn"],["Deutsch","German","Tiếng Đức"],["中文","Chinese","Tiếng Trung"],["Français","French","Tiếng Pháp"]];
+const LANGS = [
+  {code:"en", tts:"en-US", vi:"Tiếng Anh", factor:1},
+  {code:"ja", tts:"ja-JP", vi:"Tiếng Nhật", factor:1.5},
+  {code:"ko", tts:"ko-KR", vi:"Tiếng Hàn", factor:1.4},
+  {code:"de", tts:"de-DE", vi:"Tiếng Đức", factor:1.2},
+  {code:"zh", tts:"zh-CN", vi:"Tiếng Trung", factor:1.45},
+  {code:"fr", tts:"fr-FR", vi:"Tiếng Pháp", factor:1.05}
+];
+const SK = {reading:"Đọc", listening:"Nghe", grammar:"Ngữ pháp", vocabulary:"Từ vựng", speaking:"Nói", writing:"Viết"};
+const SKM = {r:"reading", l:"listening", g:"grammar", v:"vocabulary"};
+const DIF = ["","Dễ","Vừa","Khó"];
+const W = {1:1, 2:1.6, 3:2.4};
+const R = ["A1","A2","B1","B2","C1","C2"];
+const EDGES = [0, 25, 42, 58, 74, 88, 101];
+const LEVEL = {
+  A1:{name:"Sơ cấp", blurb:"Ghép được câu rất ngắn về việc quen thuộc."},
+  A2:{name:"Cơ bản", blurb:"Xử lý được thông tin đơn giản trong câu và đoạn ngắn."},
+  B1:{name:"Trung cấp", blurb:"Theo được ý chính ở đề quen thuộc, chưa ổn định với bài khó."},
+  B2:{name:"Trung cấp trên", blurb:"Theo được bài dài hơn và nêu được một ý có giải thích ngắn."},
+  C1:{name:"Cao cấp", blurb:"Đọc và nghe được nội dung chặt, vẫn có thể hụt ở câu rất khó."},
+  C2:{name:"Thành thạo", blurb:"Chỉ đứng khi điểm tạm từ 88% và không còn trần nào thấp hơn."}
+};
+const STEP_H = [90, 160, 200, 220, 280];
+const CERTS = {
+  0:[{id:"ielts", name:"IELTS Academic", min:"B2"},{id:"toefl", name:"TOEFL iBT", min:"B2"},{id:"pte", name:"PTE Academic", min:"B2"}],
+  1:[{id:"n5", name:"JLPT N5", min:"A1"},{id:"n4", name:"JLPT N4", min:"A2"},{id:"n3", name:"JLPT N3", min:"B1"},{id:"n2", name:"JLPT N2", min:"B2"},{id:"n1", name:"JLPT N1", min:"C1"}],
+  2:[{id:"topik1", name:"TOPIK I", min:"A2"},{id:"topik2", name:"TOPIK II", min:"B2"}],
+  3:[{id:"goethe", name:"Goethe-Zertifikat", min:"B1"},{id:"testdaf", name:"TestDaF", min:"B2"}],
+  4:[{id:"hsk3", name:"HSK 3", min:"A2"},{id:"hsk4", name:"HSK 4", min:"B1"},{id:"hsk5", name:"HSK 5", min:"B2"}],
+  5:[{id:"delf", name:"DELF", min:"B1"},{id:"dalf", name:"DALF", min:"C1"}]
+};
+const PR = {
+  reading:"Nên đọc lại đoạn đã sai và chỉ ra vì sao đáp án đúng, trước khi tăng độ dài.",
+  listening:"Nên nghe lại đoạn ngắn, ghi ý chính, rồi mới xem chữ.",
+  grammar:"Nên sửa đúng mẫu câu đã làm sai trước khi tăng độ khó.",
+  vocabulary:"Nên học lại từ và cụm trong các câu đã làm sai."
+};
+const DAY_NAMES = ["Thứ Hai","Thứ Ba","Thứ Tư","Thứ Năm","Thứ Sáu","Thứ Bảy","Chủ Nhật"];
+const DAY_PICK = {1:[0],2:[0,3],3:[0,2,4],4:[0,1,3,4],5:[0,1,2,3,4],6:[0,1,2,3,4,5],7:[0,1,2,3,4,5,6]};
+const ACT_NAME = {video:"Video", doc:"Đọc", nghe:"Nghe", baitap:"Bài tập"};
+
+function idx(level){const i = R.indexOf(level); return i < 0 ? 0 : i}
+function lo(a, b){return idx(a) <= idx(b) ? a : b}
+function pctText(r){return Math.round(r * 100) + "%"}
+function shownPct(raw){
+  const band = bandFromRaw(raw);
+  const high = EDGES[idx(band) + 1];
+  let r = Math.round(raw * 10) / 10;
+  if (high <= 100 && r >= high) r = Math.floor((raw + 1e-9) * 10) / 10;
+  return r < 0 ? 0 : r;
+}
+function fmtNum(n){return String(shownPct(n)).replace(".", ",")}
+function fmtPlain(n){const x = Math.round(n * 10) / 10; return String(x).replace(".", ",")}
+function money(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+function esc(s){
+  return String(s).replace(/&/g, "\u0026amp;").replace(/</g, "\u0026lt;").replace(/"/g, "\u0026quot;");
+}
+function pad(n){return String(n).padStart(2, "0")}
+function fmtDate(d){return pad(d.getDate()) + "/" + pad(d.getMonth() + 1) + "/" + d.getFullYear()}
+function parseISODate(s){
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || "");
+  if (!m) return null;
+  const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+  if (d.getFullYear() !== Number(m[1]) || d.getMonth() !== Number(m[2]) - 1) return null;
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+function startOfDay(d){const x = new Date(d); x.setHours(0, 0, 0, 0); return x}
+function hasAct(p, key){return p.activities.indexOf(key) >= 0}
+function certById(lang, id){return (CERTS[lang] || []).find(c => c.id === id) || null}
+function bandFromRaw(raw){
+  if (raw < 25) return "A1";
+  if (raw < 42) return "A2";
+  if (raw < 58) return "B1";
+  if (raw < 74) return "B2";
+  if (raw < 88) return "C1";
+  return "C2";
+}
+function skillVerdict(stats){
+  const keys = Object.keys(stats).filter(k => stats[k].n > 0);
+  if (keys.length < 2 || keys.some(k => stats[k].n < 4)) return {weak:[], strong:[], enough:false};
+  const max = Math.max(...keys.map(k => stats[k].ok));
+  const min = Math.min(...keys.map(k => stats[k].ok));
+  if (max - min < 2) return {weak:[], strong:[], enough:false};
+  return {weak:keys.filter(k => stats[k].ok === min), strong:keys.filter(k => stats[k].ok === max), enough:true};
+}
+function describeLevel(raw, cefr, prov, scored){
+  const short = "Mỗi kỹ năng khách quan chỉ có khoảng 6 câu, nên đây là ước lượng xếp lớp, không phải điểm thi.";
+  if (!scored) return {range:"A1", maybe:"", why:"Không có câu khách quan nào được tính. Mức hiển thị mặc định là A1. Độ chắc chắn: thấp. " + short};
+  if (prov !== cefr) {
+    return {
+      range: cefr + " (có thể " + cefr + "–" + prov + ")",
+      maybe: "có thể " + cefr + "–" + prov,
+      why: "Điểm có trọng số " + fmtNum(raw) + "% tương ứng mức tạm " + prov + ", nhưng trần bằng chứng giữ ở " + cefr + ". Độ chắc chắn: thấp, vì điểm tổng và trần không trùng. " + short
+    };
+  }
+  const pi = idx(prov);
+  const low = EDGES[pi];
+  const high = EDGES[pi + 1];
+  const distUp = high - raw;
+  const distDown = raw - low;
+  const upperLabel = high > 100 ? "100%" : "dưới " + high + "%";
+  let maybe = "";
+  let conf = "khá";
+  let why = "Điểm " + fmtNum(raw) + "% nằm trong khoảng từ " + low + "% đến " + upperLabel + ".";
+  if (pi < 5 && distUp <= 4) {
+    maybe = "có thể " + cefr + "–" + R[pi + 1];
+    conf = "thấp";
+    why = "Điểm " + fmtNum(raw) + "% cách mốc " + high + "% của " + R[pi + 1] + " chưa tới 4 điểm.";
+  } else if (pi > 0 && distDown <= 4) {
+    maybe = "có thể " + R[pi - 1] + "–" + cefr;
+    conf = "thấp";
+    why = "Điểm " + fmtNum(raw) + "% chỉ vừa qua mốc " + low + "%.";
+  } else if (distUp <= 8 || distDown <= 8 || scored < 20) conf = "vừa";
+  if (scored < 12) conf = "thấp";
+  return {range: maybe ? cefr + " (" + maybe + ")" : cefr, maybe, why: why + " Độ chắc chắn: " + conf + ". " + short};
+}
+function scoreAttempt(items){
+  const a = items || [];
+  const c = a.filter(x => !(x.s === "listening" && x.t));
+  const ru = [];
+  let E = 0, M = 0;
+  const sc = {};
+  const counts = {};
+  Object.values(SKM).forEach(s => {
+    const it = c.filter(x => x.s === s);
+    if (!it.length) return;
+    let e = 0, m = 0, ok = 0;
+    it.forEach(x => {m += W[x.d]; if (x.ok){e += W[x.d]; ok += 1}});
+    E += e; M += m;
+    sc[s] = Math.round(e / m * 100);
+    counts[s] = {ok, n: it.length};
+  });
+  const ex = a.length - c.length;
+  if (ex) ru.push(ex + " câu Nghe không tính vì đã mở phụ đề hoặc không nghe bằng giọng máy.");
+  const raw = M ? E / M * 100 : 0;
+  const prov = bandFromRaw(raw);
+  ru.push(M
+    ? "Điểm tổng có trọng số " + fmtNum(raw) + "% (câu dễ ×1, câu vừa ×1,6, câu khó ×2,4). Mức tạm trước khi áp trần: " + prov + "."
+    : "Không có câu khách quan nào được tính. Mức hiển thị mặc định là A1.");
+  const ac = d => {
+    const it = c.filter(x => x.d === d);
+    return it.length ? {r: it.filter(x => x.ok).length / it.length, n: it.length, k: it.filter(x => x.ok).length} : null;
+  };
+  const d1 = ac(1), d2 = ac(2), d3 = ac(3);
+  let ce = "C2";
+  if (d1) {
+    if (d1.r < .5) {ce = lo(ce, "A1"); ru.push("Câu dễ đúng " + pctText(d1.r) + ", dưới 50%. Trần mức còn A1 vì nền tảng chưa vững.")}
+    else if (d1.r < .75) {ce = lo(ce, "A2"); ru.push("Câu dễ đúng " + pctText(d1.r) + ", dưới 75%. Trần mức còn A2.")}
+  }
+  if (d2) {
+    if (d2.r < .4) {ce = lo(ce, "A2"); ru.push("Câu vừa đúng " + pctText(d2.r) + ", dưới 40%. Trần mức còn A2.")}
+    else if (d2.r < .6) {ce = lo(ce, "B1"); ru.push("Câu vừa đúng " + pctText(d2.r) + ", dưới 60%. Trần mức còn B1.")}
+  }
+  if (d3) {
+    if (d3.k < 2 || d3.r < .34) {ce = lo(ce, "B1"); ru.push("Câu khó đúng " + d3.k + "/" + d3.n + " (" + pctText(d3.r) + "). Dưới 2 câu đúng hoặc dưới 34% nên trần mức còn B1. C1/C2 cần bằng chứng ở câu khó.")}
+    else if (d3.r < .5) {ce = lo(ce, "B2"); ru.push("Câu khó đúng " + pctText(d3.r) + ", dưới 50%. Trần mức còn B2.")}
+    else if (d3.r < .75) {ce = lo(ce, "C1"); ru.push("Câu khó đúng " + pctText(d3.r) + ", dưới 75%. Trần mức còn C1.")}
+  }
+  const cefr = M ? lo(prov, ce) : "A1";
+  if (M) ru.push(cefr !== prov ? "Mức tạm " + prov + " bị hạ xuống " + cefr + " vì trần bằng chứng." : "Không có trần nào thấp hơn mức tạm. Kết quả giữ ở " + cefr + ".");
+  if (d1 && d3 && ((d1.r < .5 && d3.r >= .75) || (d3.r < .25 && d1.r >= .9))) ru.push("Các mức độ khó không đồng nhất. Ước lượng lấy mức thấp hơn, không lấy mức cao hơn.");
+  const verdict = skillVerdict(counts);
+  const view = describeLevel(raw, cefr, M ? prov : "A1", M ? c.length : 0);
+  return {raw, prov: M ? prov : "A1", cefr, ce, counts, sc, rules: ru, verdict, view, scored: c.length};
+}
+function normalize(raw){
+  const p = Object.assign({
+    lang:0, current:"A1", target:"B1", weak:"", goal:"study", goalNote:"",
+    minutes:45, days:5, deadline:"", cert:"", edu:"", age:"", exp:"",
+    activities:["video","doc","nghe","baitap"], format:"tu", budget:null, name:"", fromTest:false
+  }, raw || {});
+  p.lang = Math.max(0, Math.min(5, Number(p.lang) || 0));
+  if (R.indexOf(p.current) < 0) p.current = "A1";
+  if (R.indexOf(p.target) < 0) p.target = "B1";
+  if (!SK[p.weak]) p.weak = "";
+  if (p.goal !== "career") p.goal = "study";
+  p.goalNote = String(p.goalNote || "").slice(0, 80);
+  p.minutes = Math.max(10, Math.min(240, Math.round(Number(p.minutes) || 45)));
+  p.days = Math.max(1, Math.min(7, Math.round(Number(p.days) || 5)));
+  p.activities = (p.activities || []).filter(a => ACT_NAME[a]);
+  if (!p.activities.length) p.activities = ["baitap"];
+  if (!["tu","lop","giasu"].includes(p.format)) p.format = "tu";
+  if (p.budget !== null && p.budget !== undefined && p.budget !== "") {
+    const n = Number(p.budget);
+    p.budget = Number.isFinite(n) && n >= 0 ? Math.round(n) : null;
+  } else p.budget = null;
+  p.name = String(p.name || "").slice(0, 40);
+  return p;
+}
+function skillOrder(p){
+  const note = p.goalNote.toLowerCase();
+  const scriptLang = p.lang === 1 || p.lang === 2 || p.lang === 4;
+  let base;
+  if (scriptLang && idx(p.current) <= 1) {
+    base = p.goal === "career"
+      ? ["vocabulary","grammar","speaking","listening","reading","writing"]
+      : ["vocabulary","grammar","reading","listening","writing","speaking"];
+  } else if (note.includes("hồ sơ") || note.includes("đơn xin")) {
+    base = ["writing","reading","vocabulary","grammar","speaking","listening"];
+  } else if (note.includes("úc") || note.includes("bài giảng")) {
+    base = ["listening","reading","writing","speaking","vocabulary","grammar"];
+  } else if (p.goal === "study") {
+    base = ["reading","writing","listening","speaking","grammar","vocabulary"];
+  } else {
+    base = ["speaking","writing","listening","reading","vocabulary","grammar"];
+  }
+  const out = [];
+  if (p.weak) out.push(p.weak);
+  base.forEach(s => {if (!out.includes(s)) out.push(s)});
+  return out;
+}
+function coreTask(p, skill){
+  const vi = LANGS[p.lang].vi;
+  const note = p.goalNote.toLowerCase();
+  const forced = p.weak === skill;
+  const uc = note.includes("úc");
+  const hs = note.includes("hồ sơ") || note.includes("đại học");
+  if (skill === "listening" && !hasAct(p, "nghe") && !forced) return "Làm bài tập từ ngắn, vì hoạt động Nghe đang tắt và đây không phải kỹ năng yếu.";
+  if (skill === "reading" && !hasAct(p, "doc") && !forced) return "Làm bài tập câu, vì hoạt động Đọc đang tắt và đây không phải kỹ năng yếu.";
+  if (p.lang === 1 && idx(p.current) <= 1 && skill === "vocabulary") {
+    return p.goal === "career"
+      ? "Học 8 từ chào, xin phép, xác nhận lịch. Viết tay kèm hiragana."
+      : "Học 8 từ lớp học. Viết tay kèm hiragana.";
+  }
+  if (p.lang === 1 && idx(p.current) <= 1 && skill === "grammar") return "Viết 4 câu đúng một trợ từ cơ bản. Đọc thành tiếng từng câu.";
+  if (p.lang === 2 && idx(p.current) <= 1 && (skill === "vocabulary" || skill === "grammar")) return "Ôn hangul và 8 từ ngắn cho mục tiêu hiện tại. Đọc thành tiếng rồi viết lại.";
+  if (p.lang === 4 && idx(p.current) <= 1 && (skill === "vocabulary" || skill === "grammar")) return "Ôn pinyin, thanh điệu và 8 chữ thường gặp. Đọc thành tiếng trước khi ghép câu.";
+  if (skill === "listening") {
+    let t = uc
+      ? "Nghe một thông báo trường hoặc đoạn bài giảng 45–60 giây. Ghi 3 ý chính trước khi xem chữ."
+      : p.goal === "career"
+        ? "Nghe hội thoại giao việc hoặc xác nhận lịch bằng " + vi + ". Ghi việc cần làm và giờ."
+        : "Nghe một đoạn ngắn bằng " + vi + ", ghi ý chính, rồi mới đối chiếu chữ.";
+    if (!hasAct(p, "nghe") && forced) t += " Bạn tắt hoạt động Nghe, nhưng đây là kỹ năng yếu nên vẫn nghe một đoạn rất ngắn.";
+    return t;
+  }
+  if (skill === "writing") {
+    if (hs) return "Viết dàn ý lý do chọn ngành: 5 câu, có một ví dụ cụ thể. Chưa cần bài hoàn chỉnh, không viết theo khuôn điểm thi.";
+    if (p.goal === "career") return "Viết email xác nhận việc, 60–90 chữ, có lời chào và một việc cần làm.";
+    if (uc) return "Viết 5–7 câu tóm tắt một ý trong bài giảng, dùng because hoặc however đúng một lần.";
+    return "Viết một đoạn ngắn bằng " + vi + " về việc vừa học, rồi tự gạch lỗi đã biết.";
+  }
+  if (skill === "reading") {
+    if (hs) return "Đọc một đoạn yêu cầu hồ sơ và gạch đúng 3 việc phải làm. Không đoán điều trang không viết.";
+    if (uc) return "Đọc một đoạn ngắn về ngành học và chỉ ra câu nêu ý chính.";
+    if (p.goal === "career") return "Đọc một email hoặc thông báo nội bộ ngắn bằng " + vi + ", ghi việc và hạn.";
+    if (p.lang === 1 && idx(p.current) <= 1) return "Đọc tin nhắn 2–3 câu, chỉ gạch từ đã học. Chưa đọc đoạn dài.";
+    return "Đọc một đoạn ngắn bằng " + vi + " và trả lời một câu: ý chính là gì?";
+  }
+  if (skill === "speaking") {
+    if (p.age === "duoi-18" && p.goal === "career") return "Nói 4 câu về việc làm sau này hoặc thực tập: chào, nêu việc, xin nhắc lại, cảm ơn.";
+    if (p.lang === 1 && p.goal === "career") return "Nói 4 câu tiếng Nhật chỗ làm: chào, nêu việc, xin xác nhận, cảm ơn.";
+    if (p.goal === "career") return "Nói 4 câu chỗ làm: chào, nêu việc, xin xác nhận, cảm ơn.";
+    if (uc) return "Nói một ý về bài học trong 45 giây, có một ví dụ. Tự nghe lại.";
+    return "Nói 4–6 câu liên tiếp về việc đã học hôm nay.";
+  }
+  if (skill === "grammar") return "Viết 4 câu đúng một mẫu ngữ pháp đang học trong " + vi + ". Không học mẹo thi.";
+  if (hs) return "Học 8 từ hay gặp trong hồ sơ: hạn, ngành, lý do, minh chứng. Mỗi từ một câu.";
+  if (p.goal === "career") return "Học 8 từ chỗ làm gắn với mục tiêu đang ghi. Mỗi từ một câu ngắn.";
+  return "Học 8 từ theo chủ đề mục tiêu trong " + vi + ". Mỗi từ một câu.";
+}
+function splitBlocks(p, skill, second){
+  const m = p.minutes;
+  const main = coreTask(p, skill);
+  const support = coreTask(p, second);
+  if (m <= 50) {
+    const a = Math.max(15, Math.round(m * 0.7));
+    return [{m:a, text:main},{m:m - a, text:support}];
+  }
+  if (m <= 90) {
+    const w = Math.min(12, Math.round(m * 0.15));
+    const a = Math.round((m - w) * 0.62);
+    const warm = hasAct(p, "video") ? "Xem dưới 3 phút một đoạn giải thích, rồi tắt hình." : "Nhắc lại 3 ý buổi trước, không xem lại cả bài.";
+    return [{m:w, text:warm},{m:a, text:main},{m:m - w - a, text:support}];
+  }
+  const a = Math.round(m * 0.45);
+  return [{m:a, text:"Buổi 1. " + main},{m:m - a, text:"Buổi 2. " + support}];
+}
+function foundationText(p){
+  const vi = LANGS[p.lang].vi;
+  const top = SK[skillOrder(p)[0]];
+  const aim = p.goalNote || (p.goal === "study" ? "du học" : "nghề nghiệp");
+  if (p.lang === 1) {
+    return p.goal === "career"
+      ? "Học hiragana, katakana và câu chào chỗ làm. Mỗi buổi " + p.minutes + " phút: chữ, mẫu câu ngắn, rồi nghe thông báo rất ngắn. Hướng gần: " + aim + ". Ưu tiên " + top + "."
+      : "Học hiragana, katakana và câu lớp học. Mỗi buổi " + p.minutes + " phút, chữ đứng trước đoạn dài. Hướng gần: " + aim + ". Ưu tiên " + top + ".";
+  }
+  if (p.lang === 2) return "Học hangul và câu ngắn cho " + aim + ". Buổi " + p.minutes + " phút, ưu tiên " + top + ". Chưa làm đề dài.";
+  if (p.lang === 4) return "Học pinyin, thanh điệu và chữ thường gặp cho " + aim + ". Buổi " + p.minutes + " phút, ưu tiên " + top + ".";
+  if (p.goal === "career") return "Mẫu câu và từ cốt lõi của " + vi + " cho việc làm (" + aim + "). Nghe thông báo ngắn, viết email rất ngắn. Ưu tiên " + top + ".";
+  return "Mẫu câu thường gặp và từ cốt lõi của " + vi + " cho " + aim + ". Nghe thông báo ngắn, đọc đoạn rất ngắn. Ưu tiên " + top + ".";
+}
+function buildStages(p){
+  const ci = idx(p.current), ti = idx(p.target);
+  const order = skillOrder(p);
+  const top = SK[order[0]];
+  const note = p.goalNote.toLowerCase();
+  const aim = p.goalNote || (p.goal === "study" ? "du học" : "nghề nghiệp");
+  if (ti <= ci) {
+    return [{title:"Giữ mức và vá kỹ năng yếu", text:"Mức muốn đạt " + p.target + " không cao hơn mức hiện tại " + p.current + ". Chỉ ôn " + top + " trong " + LANGS[p.lang].vi + ", " + p.minutes + " phút mỗi buổi. Không mở thêm mức mới và không hứa điểm thi."}];
+  }
+  const stages = [];
+  if (ci <= 1) stages.push({title: ci === 0 ? "Nền tảng " + LANGS[p.lang].vi : "Vá nền " + LANGS[p.lang].vi, text: foundationText(p)});
+  else if (p.weak) stages.push({title:"Vá " + SK[p.weak], text:"Mức hiện tại đã là " + p.current + ", nên không học lại từ đầu. Khoảng một nửa buổi dành cho " + SK[p.weak] + " vì đây là chỗ đang hụt, rồi mới tăng độ khó."});
+  if (ci < 2 && ti >= 2) {
+    const line = p.lang === 1
+      ? "Ghép câu ngắn có trợ từ cơ bản, đọc tin 2–3 câu, nghe số giờ và địa điểm. Ưu tiên " + top + ". Chưa làm đoạn dài."
+      : p.goal === "career"
+        ? "Đọc thông báo nội bộ ngắn, nghe ý chính, viết 4 câu nối. Ưu tiên " + top + "."
+        : "Đọc đoạn ngắn, nghe ý chính, nói vài câu liên tiếp, viết câu có từ nối. Ưu tiên " + top + ".";
+    stages.push({title:"Phát triển ngôn ngữ", text: line});
+  }
+  if (ti >= 2) {
+    let title = "Ngôn ngữ học thuật";
+    let text = "Từ học thuật, đoạn nêu ý kiến, nghe bài giảng ngắn, nói một ý có ví dụ. Hướng: " + aim + ".";
+    if (p.goal === "study" && note.includes("úc")) {
+      title = "Ngôn ngữ học thuật cho du học";
+      text = "Đọc đoạn về ngành, nghe bài giảng ngắn kiểu buổi học, viết 5–7 câu nêu một ý có ví dụ. Không thay yêu cầu tiếng của từng trường — phải xem trang tuyển sinh hiện hành.";
+    } else if (p.goal === "study" && (note.includes("hồ sơ") || note.includes("đại học"))) {
+      title = "Ngôn ngữ hồ sơ học";
+      text = "Luyện đoạn mở hồ sơ, email hỏi hạn nộp, và cách nêu lý do chọn ngành trong khoảng 120–150 chữ. Không cam kết đỗ.";
+    } else if (p.goal === "career" && p.lang === 1) {
+      title = "Tiếng Nhật chỗ làm";
+      text = "Câu lịch sự sơ cấp, email xác nhận lịch, hội thoại giao việc. Không cam kết việc làm và không thay yêu cầu của nhà tuyển dụng.";
+    } else if (p.goal === "career") {
+      title = "Ngôn ngữ chỗ làm";
+      text = "Từ nghề nghiệp, email xác nhận việc, hội thoại giao ca cho hướng " + aim + ". Không cam kết việc làm.";
+    }
+    stages.push({title, text});
+  }
+  if (ti >= 3 && ti - ci >= 2) {
+    stages.push({title:"Làm chắc " + p.target, text:"Làm bài dài hơn một chút ở mức " + p.target + ", vẫn xoay quanh " + top + ". Không làm đề thi thử có giám khảo và không dự đoán điểm."});
+  }
+  const cert = p.cert ? certById(p.lang, p.cert) : null;
+  if (cert && ti >= idx(cert.min)) {
+    stages.push({title:"Làm quen chứng chỉ", text:"Xem cấu trúc " + cert.name + " trên trang của đơn vị tổ chức. Làm bài tập ngắn ở phần " + top + ". Mốc tham khảo trên trang này là " + cert.min + ", không phải điểm quy đổi chính thức và không dự đoán điểm thi."});
+  }
+  if (p.deadline) stages.push({title:"Ôn trước mốc thời gian", text:"Trước ngày đã chọn, làm lại phần " + top + ", xem lỗi cũ và chỉnh lịch nếu trễ tuần. Không phải đề thi thử có giám khảo."});
+  return stages;
+}
+function certNote(p){
+  if (!p.cert) return "";
+  const cert = certById(p.lang, p.cert);
+  if (!cert || idx(p.target) >= idx(cert.min)) return "";
+  return "Bạn chọn " + cert.name + ", mốc tham khảo trên trang này là " + cert.min + ". Mức muốn đạt đang thấp hơn, nên chưa thêm giai đoạn chứng chỉ.";
+}
+function profileNotes(p){
+  const notes = [];
+  if (p.age === "duoi-18") notes.push("Khoảng tuổi dưới 18: ví dụ theo bài trên lớp và việc chuẩn bị sau phổ thông.");
+  else if (p.age === "18-22") notes.push("Khoảng 18–22 tuổi: ví dụ theo bài giảng và hồ sơ học.");
+  else if (p.age === "23-30") notes.push("Khoảng 23–30 tuổi: ví dụ có thể lấy từ việc làm hoặc học lên.");
+  else if (p.age === "tren-30") notes.push("Trên 30 tuổi: ví dụ nghiêng về việc làm và email, trừ khi mục tiêu là du học.");
+  if (p.edu === "thpt") notes.push("Bậc phổ thông: bài ngắn, gắn với môn học và thông báo trường.");
+  else if (p.edu === "dh") notes.push("Bậc đại học: bài gắn với bài giảng, tài liệu môn và email nhà trường.");
+  else if (p.edu === "dilam") notes.push("Đang đi làm: bài gắn với email, cuộc họp ngắn và từ nghề.");
+  if (p.exp === "moi") notes.push("Mới bắt đầu: phần đầu buổi ôn lại mẫu cũ trước khi thêm bài mới.");
+  else if (p.exp === "co") notes.push("Đã học một thời gian: giảm bài làm quen chữ, tăng đoạn dài hơn một chút.");
+  else if (p.exp === "dung") notes.push("Đang dùng ngôn ngữ này khi làm việc: lấy tình huống từ công việc.");
+  if (p.budget === null) notes.push("Chưa nhập ngân sách (VNĐ/tháng): lịch là tự học, không giả định có lớp.");
+  else if (p.budget < 500000) notes.push("Ngân sách " + money(p.budget) + " VNĐ/tháng: chưa xếp lớp trả phí.");
+  else if (p.budget < 1500000) notes.push("Ngân sách " + money(p.budget) + " VNĐ/tháng: có thể mua tài liệu, chưa giả định học phí lớp.");
+  else notes.push("Ngân sách " + money(p.budget) + " VNĐ/tháng: có thể thêm một buổi lớp hoặc gia sư nếu bạn chọn hình thức đó.");
+  if (p.format === "lop") notes.push("Hình thức lớp: một ngày trong tuần dành cho buổi lớp, ưu tiên kỹ năng đứng đầu.");
+  else if (p.format === "giasu") notes.push("Hình thức gia sư: mang bài yếu của tuần tới buổi, các ngày khác tự làm.");
+  else notes.push("Hình thức tự học: mọi buổi tự làm, không giả định có người chữa bài.");
+  notes.push("Loại hoạt động đang bật: " + p.activities.map(a => ACT_NAME[a]).join(", ") + ".");
+  return notes;
+}
+function resourceFor(p, skill){
+  const vi = LANGS[p.lang].vi;
+  const note = p.goalNote.toLowerCase();
+  if (p.lang === 1 && skill === "vocabulary" && idx(p.current) <= 1) return "Bảng hiragana và katakana, kèm 20 từ chào, xin phép và xác nhận lịch. Tự chép trên giấy.";
+  if (p.lang === 1 && skill === "grammar" && idx(p.current) <= 1) return "Bốn câu đúng một trợ từ cơ bản. Tự chép, không học mẫu dài.";
+  if (p.lang === 1 && skill === "speaking" && p.goal === "career") return "Sáu câu nói chỗ làm: chào, cảm ơn, xin phép, xác nhận giờ. Đọc thành tiếng.";
+  if (skill === "listening") return p.goal === "study"
+    ? "Một thông báo trường và một đoạn bài giảng ngắn bằng " + vi + ". Nghe hai lần trước khi xem chữ."
+    : "Một đoạn hội thoại giao việc bằng " + vi + ". Nghe hai lần, ghi việc và giờ.";
+  if (skill === "writing") {
+    if (note.includes("hồ sơ") || note.includes("đại học")) return "Dàn ý khoảng 150 chữ: lý do chọn ngành, một ví dụ, một câu kết. Tự sửa từ nối.";
+    if (p.goal === "career") return "Một mẫu email xác nhận việc, 60–90 chữ, để điền tình huống của bạn.";
+    if (note.includes("úc")) return "Năm đến bảy câu tóm tắt một ý bài giảng, dùng một từ nối.";
+    return "Một đoạn ngắn tự viết bằng " + vi + ", rồi tự gạch lỗi đã biết.";
+  }
+  if (skill === "reading") return "Một đoạn ngắn bằng " + vi + " đúng chủ đề mục tiêu. Tự hỏi ý chính nằm ở câu nào.";
+  if (skill === "speaking") return "Bốn câu nói thành tiếng về việc vừa học. Tự nghe lại một lần.";
+  if (skill === "grammar") return "Bốn câu đúng một mẫu ngữ pháp trong " + vi + ". Không học mẹo thi.";
+  return "Tám từ theo chủ đề mục tiêu trong " + vi + ", mỗi từ một câu.";
+}
+function buildWeek(p, order){
+  const picks = DAY_PICK[p.days];
+  return picks.map((dayIdx, i) => {
+    const guided = (p.format === "lop" || p.format === "giasu") && i === picks.length - 1;
+    if (guided) {
+      return {idx: dayIdx, name: DAY_NAMES[dayIdx], label: p.format === "lop" ? "Buổi lớp" : "Buổi gia sư", blocks:[{m:p.minutes, text:"Mang phần " + SK[order[0]] + " đang sai. Không học lại toàn bộ chương trình trong một buổi."}]};
+    }
+    const skill = i % 2 === 0 ? order[0] : order[1 + Math.floor(i / 2) % (order.length - 1)];
+    const second = order.find(s => s !== skill) || order[0];
+    return {idx: dayIdx, name: DAY_NAMES[dayIdx], label: SK[skill], blocks: splitBlocks(p, skill, second)};
+  });
+}
+function paceOf(weeks, deadline, today){
+  if (!deadline) return {key:"none", text:"Chưa chọn ngày đích. Mốc hoàn thành chỉ là ước lượng theo số phút bạn nhập."};
+  const end = parseISODate(deadline);
+  if (!end) return {key:"bad", text:"Ngày đích không đọc được. Hãy chọn lại."};
+  const now = startOfDay(today || new Date());
+  const availDays = Math.round((end - now) / 86400000);
+  if (availDays < 0) return {key:"past", text:"Ngày đích " + fmtDate(end) + " đã qua. Hãy chọn ngày mới."};
+  const availWeeks = availDays / 7;
+  const ratio = weeks ? availWeeks / weeks : 1;
+  const left = "Còn khoảng " + fmtPlain(availWeeks) + " tuần (tới " + fmtDate(end) + "), lộ trình ước lượng " + weeks + " tuần.";
+  if (ratio >= 1.2) return {key:"ok", text:"Vừa đủ. " + left};
+  if (ratio >= 0.85) return {key:"tight", text:"Sát. " + left + " Nên giữ đều, đừng thêm mục tiêu mới."};
+  return {key:"short", text:"Quá ngắn. " + left + " Hãy hạ mức muốn đạt hoặc tăng phút mỗi ngày. Đây không phải cam kết sẽ xong đúng hạn."};
+}
+function buildRoadmap(raw, today){
+  const p = normalize(raw);
+  const order = skillOrder(p);
+  const ci = idx(p.current), ti = idx(p.target);
+  let hours = 0;
+  if (ti <= ci) hours = p.weak ? 32 : 24;
+  else {
+    for (let i = ci; i < ti; i++) hours += STEP_H[i];
+    if (p.weak) hours *= 1.18;
+    if (p.exp === "moi" && ci <= 1) hours *= 1.08;
+  }
+  hours *= LANGS[p.lang].factor;
+  if (p.format === "lop" || p.format === "giasu") hours *= 0.92;
+  hours = Math.round(hours);
+  const weeklyHours = p.minutes * p.days / 60;
+  const weeks = Math.max(1, Math.ceil(hours / weeklyHours));
+  const activities = [coreTask(p, order[0]), coreTask(p, order[1]), coreTask(p, order[2])];
+  activities.push(p.goal === "study"
+    ? "Cuối tuần: đọc lại ghi chú và viết 5 câu tóm tắt. Không làm đề thi thử."
+    : "Cuối tuần: đọc lại mẫu email hoặc câu giao tiếp đã học, rồi nói thành tiếng một lần.");
+  return {
+    profile: p,
+    stages: buildStages(p),
+    order,
+    week: buildWeek(p, order),
+    hours, weeks, weeklyHours,
+    pace: paceOf(weeks, p.deadline, today),
+    resources: order.slice(0, 3).map(s => resourceFor(p, s)),
+    activities,
+    notes: profileNotes(p),
+    certNote: certNote(p)
+  };
+}
+const CASES = {
+  A:{lang:0, current:"A2", target:"B2", weak:"listening", goal:"study", goalNote:"Du học Úc", minutes:60, days:5, edu:"thpt", age:"duoi-18", exp:"co", format:"tu", budget:null, cert:"", deadline:"", activities:["video","doc","nghe","baitap"]},
+  B:{lang:0, current:"B1", target:"C1", weak:"writing", goal:"study", goalNote:"Hồ sơ đại học quốc tế", minutes:120, days:5, edu:"dh", age:"18-22", exp:"co", format:"tu", budget:null, cert:"", deadline:"", activities:["video","doc","nghe","baitap"]},
+  C:{lang:1, current:"A1", target:"B1", weak:"", goal:"career", goalNote:"Tìm hiểu yêu cầu tiếng Nhật cho nghề nghiệp tương lai", minutes:45, days:5, edu:"", age:"", exp:"moi", format:"tu", budget:null, cert:"", deadline:"", activities:["video","doc","nghe","baitap"]}
+};
+globalThis.LP = {buildRoadmap, scoreAttempt, CASES, CERTS, LANGS, SK, R, LEVEL, bandFromRaw, L, DATA};
+function planSummary(plan){
+  const p = plan.profile;
+  const lines = [];
+  lines.push("LinguaPath — tóm tắt lộ trình");
+  if (p.name) lines.push("Tên hiển thị: " + p.name);
+  lines.push("Ngôn ngữ: " + LANGS[p.lang].vi);
+  lines.push("Mức hiện tại: " + p.current + (p.fromTest ? " (từ bài xếp lớp)" : " (từ ô tùy chỉnh)"));
+  lines.push("Mức muốn đạt: " + p.target);
+  lines.push("Mục tiêu: " + (p.goal === "study" ? "Du học" : "Nghề nghiệp") + (p.goalNote ? " — " + p.goalNote : ""));
+  lines.push("Mỗi ngày: " + p.minutes + " phút · " + p.days + " ngày/tuần");
+  lines.push("Ước lượng: khoảng " + plan.hours + " giờ, khoảng " + plan.weeks + " tuần.");
+  lines.push("Ngày đích: " + plan.pace.text);
+  lines.push("Ưu tiên kỹ năng: " + plan.order.map(s => SK[s]).join(" → "));
+  lines.push("Giai đoạn:");
+  plan.stages.forEach((s, i) => lines.push((i + 1) + ". " + s.title + " — " + s.text));
+  if (plan.certNote) lines.push(plan.certNote);
+  lines.push("Lịch tuần:");
+  plan.week.forEach(d => lines.push(d.name + " · " + d.label + " · " + d.blocks.map(b => b.m + " phút: " + b.text).join(" | ")));
+  lines.push("Việc nên làm:");
+  plan.activities.forEach(a => lines.push("- " + a));
+  lines.push("Tài nguyên gợi ý:");
+  plan.resources.forEach(a => lines.push("- " + a));
+  plan.notes.forEach(n => lines.push(n));
+  lines.push("Ước lượng để xếp lịch, không cam kết đạt mức hay điểm thi.");
+  lines.push("Tóm tắt này chỉ nằm trong trình duyệt của bạn, không được gửi đi.");
+  return lines.join("\n");
+}
+function planHtml(plan, eyebrow){
+  const p = plan.profile;
+  const week = plan.week.map(d =>
+    "<li><b>" + esc(d.name) + " · " + esc(d.label) + " · " + d.blocks.reduce((s, b) => s + b.m, 0) + " phút</b><ul>" +
+    d.blocks.map(b => "<li>" + b.m + " phút: " + esc(b.text) + "</li>").join("") + "</ul></li>"
+  ).join("");
+  return '<p class="eyebrow">' + esc(eyebrow) + "</p>" +
+    "<h3>" + esc(LANGS[p.lang].vi) + " · " + esc(p.current) + " → " + esc(p.target) + "</h3>" +
+    "<p>" + esc(p.goal === "study" ? "Du học" : "Nghề nghiệp") + (p.goalNote ? " — " + esc(p.goalNote) : "") + ". " + p.minutes + " phút/ngày · " + p.days + " ngày/tuần.</p>" +
+    '<p class="muted">Khoảng ' + plan.hours + " giờ, tức khoảng " + plan.weeks + " tuần (" + fmtPlain(plan.weeklyHours) + " giờ/tuần). Ước lượng để xếp lịch, không cam kết đạt mức hay điểm thi.</p>" +
+    "<p>" + esc(plan.pace.text) + "</p>" +
+    (plan.certNote ? '<p class="note-inline">' + esc(plan.certNote) + "</p>" : "") +
+    "<h4>Thứ tự ưu tiên kỹ năng</h4><ol>" + plan.order.map(s => "<li>" + esc(SK[s]) + "</li>").join("") + "</ol>" +
+    '<h4>Giai đoạn</h4><div class="stages">' + plan.stages.map(s => '<div class="card stage"><div><h3>' + esc(s.title) + '</h3><p class="muted">' + esc(s.text) + "</p></div></div>").join("") + "</div>" +
+    '<h4>Lịch tuần</h4><ul class="week">' + week + "</ul>" +
+    "<h4>Việc nên làm</h4><ul>" + plan.activities.map(a => "<li>" + esc(a) + "</li>").join("") + "</ul>" +
+    "<h4>Tài nguyên gợi ý</h4><ul>" + plan.resources.map(a => "<li>" + esc(a) + "</li>").join("") + "</ul>" +
+    "<h4>Vì hồ sơ này</h4><ul>" + plan.notes.map(n => "<li>" + esc(n) + "</li>").join("") + "</ul>";
+}
+function boot(){
+  const $ = id => document.getElementById(id);
+  let mem = [];
+  let last = null;
+  let review = [];
+  let userPlan = null;
+  const state = {fromTest:false};
+  function stop(){try{speechSynthesis.cancel()}catch(e){}}
+  function load(key, fallback){
+    try{const raw = localStorage.getItem(key); if (!raw) return fallback; const v = JSON.parse(raw); return v == null ? fallback : v}catch(e){return fallback}
+  }
+  function save(key, value){
+    try{localStorage.setItem(key, JSON.stringify(value)); return true}catch(e){
+      const box = $("saveWarn");
+      if (box){box.hidden = false; box.textContent = "Không lưu được trên trình duyệt này. Tiến độ có thể mất khi bạn đóng trang."}
+      return false;
+    }
+  }
+  function sliderCopy(v){
+    const band = bandFromRaw(v);
+    const pi = idx(band);
+    const low = EDGES[pi];
+    const high = EDGES[pi + 1];
+    const upper = high > 100 ? "100%" : "dưới " + high + "%";
+    return v + "% thuộc khoảng từ " + low + "% đến " + upper + ", nên mức tạm là " + band + " — " + LEVEL[band].name + ". " + LEVEL[band].blurb + " Trần độ khó có thể hạ mức này, không kéo lên cao hơn.";
+  }
+  function paintSlider(){
+    const v = Number($("rng").value);
+    const band = bandFromRaw(v);
+    $("band").textContent = v + "% · " + band;
+    $("bandVi").textContent = LEVEL[band].name;
+    $("bandLive").textContent = sliderCopy(v);
+    [...$("bar").children].forEach((d, i) => d.classList.toggle("on", R[i] === band));
+  }
+  $("rng").addEventListener("input", paintSlider);
+  paintSlider();
+  function renderSamples(){
+    $("sample-study").innerHTML = '<p class="pill">Ví dụ</p>' + planHtml(buildRoadmap(CASES.A), "Du học · ví dụ");
+    $("sample-career").innerHTML = '<p class="pill">Ví dụ</p>' + planHtml(buildRoadmap(CASES.C), "Nghề nghiệp · ví dụ");
+  }
+  renderSamples();
+  const tabs = [...document.querySelectorAll("#sampleTabs [role=tab]")];
+  function selectTab(id){
+    tabs.forEach(t => {
+      const on = t.id === id;
+      t.classList.toggle("o", !on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute("aria-controls")).classList.toggle("on", on);
+    });
+  }
+  tabs.forEach(t => t.addEventListener("click", () => selectTab(t.id)));
+  $("sampleTabs").addEventListener("keydown", e => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    e.preventDefault();
+    const i = tabs.findIndex(t => t.getAttribute("aria-selected") === "true");
+    const n = e.key === "ArrowRight" ? (i + 1) % tabs.length : (i + tabs.length - 1) % tabs.length;
+    selectTab(tabs[n].id);
+    tabs[n].focus();
+  });
+  function fillCerts(lang, keep){
+    const sel = $("f-cert");
+    const cur = keep == null ? sel.value : keep;
+    sel.innerHTML = '<option value="">Chưa chọn</option>' + (CERTS[lang] || []).map(c => '<option value="' + c.id + '">' + esc(c.name) + " · mốc tham khảo " + c.min + "</option>").join("");
+    if ([...sel.options].some(o => o.value === cur)) sel.value = cur;
+  }
+  function readForm(){
+    const budgetRaw = $("f-budget").value.trim().replace(/\s/g, "").replace(/\./g, "");
+    let budget = null;
+    let error = "";
+    if (budgetRaw) {
+      if (!/^\d+$/.test(budgetRaw)) error = "Ngân sách chỉ gồm số, đơn vị VNĐ/tháng.";
+      else budget = Number(budgetRaw);
+    }
+    const minutes = Number($("f-min").value);
+    if (!Number.isFinite(minutes) || minutes < 10 || minutes > 240) error = error || "Nhập số phút mỗi ngày từ 10 đến 240.";
+    const acts = [...document.querySelectorAll("input[name=act]:checked")].map(x => x.value);
+    if (!acts.length) error = error || "Chọn ít nhất một loại hoạt động trong tùy chỉnh nâng cao.";
+    return {error, profile:{
+      lang: Number($("f-lang").value), current: $("f-cur").value, target: $("f-target").value,
+      weak: $("f-weak").value === "unknown" ? "" : $("f-weak").value,
+      goal: $("f-goal").value, goalNote: $("f-note").value.trim(), minutes,
+      days: Number($("f-days").value), deadline: $("f-date").value, cert: $("f-cert").value,
+      edu: $("f-edu").value, age: $("f-age").value, exp: $("f-exp").value, activities: acts,
+      format: $("f-format").value, budget, name: $("f-name").value.trim(), fromTest: state.fromTest
+    }};
+  }
+  function renderUserPlan(){
+    const got = readForm();
+    const err = $("formErr");
+    if (got.error) {err.hidden = false; err.textContent = got.error; return}
+    err.hidden = true;
+    userPlan = buildRoadmap(got.profile);
+    const src = state.fromTest ? "Mức hiện tại lấy từ bài xếp lớp trên trình duyệt này." : "Mức hiện tại lấy từ ô tùy chỉnh, chưa gắn với bài xếp lớp mới nhất.";
+    $("planOut").innerHTML = planHtml(userPlan, "Lộ trình của bạn") + '<p class="muted">' + esc(src) + "</p>";
+    save("lp_form", got.profile);
+    dash();
+  }
+  function applyStoredForm(){
+    const f = load("lp_form", null);
+    if (!f) return;
+    $("f-lang").value = String(f.lang ?? 0);
+    fillCerts(Number($("f-lang").value), f.cert || "");
+    $("f-cur").value = f.current || "A1";
+    $("f-target").value = f.target || "B1";
+    $("f-weak").value = f.weak ? f.weak : "unknown";
+    $("f-goal").value = f.goal === "career" ? "career" : "study";
+    $("f-note").value = f.goalNote || "";
+    $("f-min").value = f.minutes || 45;
+    $("f-days").value = String(f.days || 5);
+    $("f-date").value = f.deadline || "";
+    $("f-edu").value = f.edu || "";
+    $("f-age").value = f.age || "";
+    $("f-exp").value = f.exp || "";
+    $("f-format").value = f.format || "tu";
+    $("f-budget").value = f.budget == null ? "" : String(f.budget);
+    $("f-name").value = f.name || "";
+    document.querySelectorAll("input[name=act]").forEach(el => {el.checked = (f.activities || []).includes(el.value)});
+    state.fromTest = !!f.fromTest;
+  }
+  $("f-lang").addEventListener("change", () => fillCerts(Number($("f-lang").value)));
+  $("f-cur").addEventListener("change", () => {state.fromTest = false});
+  let timer = 0;
+  $("planForm").addEventListener("input", () => {clearTimeout(timer); timer = setTimeout(renderUserPlan, 200)});
+  $("planForm").addEventListener("submit", e => {e.preventDefault(); renderUserPlan()});
+  fillCerts(0, "");
+  const D = [
+    ["Tổng quan","Mức hiện tại và việc tiếp theo."],
+    ["Bài hôm nay","Việc đúng ngày trong lịch tuần."],
+    ["Hướng đi","Cùng quỹ giờ, đặt du học cạnh nghề nghiệp."],
+    ["Luyện tập","Câu đã làm sai trong bài gần nhất."],
+    ["Tiến độ","So điểm các bài cùng ngôn ngữ."],
+    ["Chứng chỉ","Danh sách theo ngôn ngữ đang chọn."],
+    ["Thư viện nguồn","Gợi ý bài để tự làm, không tải từ mạng."],
+    ["Gợi ý luyện tập","Việc nên làm với kỹ năng đang ưu tiên."],
+    ["Cài đặt","Tên hiển thị, số phút và số ngày học."]
+  ];
+  applyStoredForm();
+  renderUserPlan();
+  $("printBtn").addEventListener("click", () => window.print());
+  $("copyBtn").addEventListener("click", async () => {
+    const status = $("copyStatus");
+    if (!userPlan){status.textContent = "Chưa có lộ trình để sao chép."; return}
+    const text = planSummary(userPlan);
+    try {
+      await navigator.clipboard.writeText(text);
+      status.textContent = "Đã sao chép tóm tắt lộ trình.";
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {document.execCommand("copy"); status.textContent = "Đã sao chép tóm tắt lộ trình."}
+      catch (err) {status.textContent = "Không sao chép được. Hãy chọn chữ trong phần lộ trình rồi sao chép thủ công."}
+      ta.remove();
+    }
+  });
+  let cur = {};
+  function show(i){
+    stop();
+    cur = {i, n:0, a:[]};
+    $("langInfo").innerHTML = '<p class="eyebrow">Bài xếp lớp · ' + esc(L[i][2]) + '</p><h3>24 câu · Đọc, Nghe, Ngữ pháp, Từ vựng</h3><p class="muted">Chấm đúng theo luật ở phần bên dưới. Câu Nghe đọc bằng giọng máy của trình duyệt; mở phụ đề thì câu đó không tính điểm. Nói và Viết không có trong 24 câu này.</p><button class="btn" id="go" type="button">Bắt đầu làm bài</button>';
+    $("go").onclick = ask;
+  }
+  function ask(){
+    stop();
+    const qs = DATA[cur.i], q = qs[cur.n], k = SKM[q.k], lg = LANGS[cur.i].code;
+    cur.sel = null; cur.played = false; cur.shown = false;
+    let t = '<p class="eyebrow">Câu ' + (cur.n + 1) + "/" + qs.length + " · " + SK[k] + " · " + DIF[q.d] + '</p><div class="pbar" role="progressbar" aria-valuemin="0" aria-valuemax="' + qs.length + '" aria-valuenow="' + cur.n + '" aria-label="Tiến độ bài"><i style="width:' + (cur.n / qs.length * 100) + '%"></i></div>';
+    if (k === "listening") t += '<div class="lrow"><button class="btn o" id="pl" type="button">Nghe</button><button class="btn o" id="tr" type="button">Hiện phụ đề</button></div><p class="stim" id="st" lang="' + lg + '" hidden>' + esc(q.s) + '</p><p class="muted" id="fb"></p>';
+    else if (q.s) t += '<p class="stim" lang="' + lg + '">' + esc(q.s) + "</p>";
+    t += '<p class="qp" lang="' + lg + '">' + esc(q.p) + "</p>" + q.o.map((x, j) => '<button class="opt" type="button" data-j="' + j + '" lang="' + lg + '">' + esc(x) + "</button>").join("") + '<div class="lrow"><button class="btn" id="nx" type="button" disabled>' + (cur.n + 1 < qs.length ? "Câu tiếp" : "Xem kết quả") + "</button></div>";
+    $("langInfo").innerHTML = t;
+    $("langInfo").querySelectorAll(".opt").forEach(b => b.onclick = () => {
+      cur.sel = +b.dataset.j;
+      $("langInfo").querySelectorAll(".opt").forEach(e => {
+        const on = e === b;
+        e.classList.toggle("sel", on);
+        e.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      $("nx").disabled = false;
+    });
+    if (k === "listening") {
+      $("pl").onclick = () => {
+        if (!window.speechSynthesis) {
+          cur.shown = true; $("st").hidden = false;
+          $("fb").textContent = "Trình duyệt không có giọng máy nên đã hiện phụ đề. Câu này không tính điểm.";
+          return;
+        }
+        stop();
+        const u = new SpeechSynthesisUtterance(q.s);
+        u.lang = LANGS[cur.i].tts;
+        speechSynthesis.speak(u);
+        cur.played = true;
+      };
+      $("tr").onclick = () => {cur.shown = true; $("st").hidden = false; $("fb").textContent = "Đã mở phụ đề: câu này không tính điểm."};
+    }
+    $("nx").onclick = () => {
+      stop();
+      cur.a.push({s:k, d:q.d, ok:cur.sel === q.c, t:k === "listening" && (cur.shown || !cur.played), n:cur.n});
+      cur.n += 1;
+      cur.n < qs.length ? ask() : fin();
+    };
+  }
+  function fin(){
+    const qs = DATA[cur.i];
+    const result = scoreAttempt(cur.a);
+    const wrong = cur.a.filter(x => !x.ok);
+    const verdict = result.verdict;
+    const pri = !verdict.enough
+      ? '<p class="muted">Chưa đủ dữ liệu để kết luận kỹ năng yếu nhất hay mạnh nhất. Cần chênh ít nhất 2 câu giữa các kỹ năng, và mỗi kỹ năng còn ít nhất 4 câu được tính.</p>'
+      : verdict.weak.map(k => "<p><b>" + SK[k] + " · yếu nhất.</b> " + esc(PR[k]) + "</p>").join("") + verdict.strong.map(k => "<p><b>" + SK[k] + " · mạnh nhất.</b> Đúng nhiều hơn các kỹ năng khác ít nhất 2 câu trong bài này.</p>").join("");
+    const skills = Object.keys(result.counts).map(k => {
+      const c = result.counts[k];
+      const tag = verdict.enough && verdict.weak.includes(k) ? " · yếu nhất" : verdict.enough && verdict.strong.includes(k) ? " · mạnh nhất" : "";
+      return '<div class="sk"><span>' + SK[k] + esc(tag) + '</span><div class="pbar" aria-hidden="true"><i style="width:' + result.sc[k] + '%"></i></div><b>đúng ' + c.ok + "/" + c.n + "</b></div>";
+    }).join("");
+    $("langInfo").innerHTML =
+      '<p class="eyebrow">Kết quả · ' + esc(L[cur.i][2]) + '</p><div class="res"><b>' + esc(result.cefr) + "</b>" +
+      (result.view.maybe ? '<span class="maybe">' + esc(result.view.maybe) + "</span>" : "") +
+      "<span>" + esc(LEVEL[result.cefr].name) + '</span><span class="muted">Tổng điểm có trọng số: ' + fmtNum(result.raw) + "%</span></div>" +
+      "<p>" + esc(result.view.why) + "</p>" + skills +
+      "<h3>Việc nên ưu tiên</h3>" + pri +
+      "<h3>Luật chấm đã áp dụng</h3><ul>" + result.rules.map(x => "<li>" + esc(x) + "</li>").join("") + "</ul>" +
+      '<p class="muted">Mức dùng cho lộ trình là ' + result.cefr + ", không phải cả khoảng. Bảng trần đầy đủ nằm ở phần Vì sao ra mức này?</p>" +
+      (wrong.length ? "<details><summary>Xem lại " + wrong.length + " câu sai</summary><ul>" + wrong.map(x => {
+        const q = qs[x.n];
+        return '<li><span lang="' + LANGS[cur.i].code + '">' + esc(q.p) + '</span> — Đáp án đúng: <b lang="' + LANGS[cur.i].code + '">' + esc(q.o[q.c]) + "</b>. " + esc(q.e) + "</li>";
+      }).join("") + "</ul></details>" : "") +
+      '<div class="lrow"><button class="btn" id="again" type="button">Làm lại</button><button class="btn o" id="oth" type="button">Chọn ngôn ngữ khác</button><a class="textlink" href="#roadmap">Dùng mức này để tạo lộ trình</a></div>';
+    $("again").onclick = () => show(cur.i);
+    $("oth").onclick = () => $("langs").scrollIntoView();
+    const rec = {l:L[cur.i][2], c:result.cefr, o:Math.round(result.raw), t:Date.now()};
+    mem.push(rec);
+    save("lp_hist", load("lp_hist", []).concat([rec]).slice(-20));
+    last = {lang:cur.i, cefr:result.cefr, range:result.view.range, raw:result.raw, weak:verdict.weak, strong:verdict.strong, enough:verdict.enough};
+    save("lp_last", last);
+    review = wrong.map(x => {const q = qs[x.n]; return {p:q.p, a:q.o[q.c], e:q.e}});
+    save("lp_review", {lang:L[cur.i][2], items:review});
+    hist();
+    $("f-lang").value = String(cur.i);
+    fillCerts(cur.i, $("f-cert").value);
+    $("f-cur").value = result.cefr;
+    $("f-weak").value = verdict.enough && verdict.weak.length === 1 ? verdict.weak[0] : "unknown";
+    state.fromTest = true;
+    $("fromTest").hidden = false;
+    $("fromTest").textContent = verdict.enough && verdict.weak.length === 1
+      ? "Đã điền mức " + result.cefr + " và kỹ năng ưu tiên " + SK[verdict.weak[0]] + " từ bài vừa làm."
+      : "Đã điền mức " + result.cefr + " từ bài vừa làm. Chưa đủ dữ liệu để chọn một kỹ năng yếu nhất.";
+    renderUserPlan();
+    $("langInfo").scrollIntoView({block:"start"});
+  }
+  const langBox = $("langs");
+  langBox.innerHTML = "";
+  L.forEach((x, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "card lang" + (i ? "" : " on");
+    b.innerHTML = "<small>" + esc(x[2]) + "</small><b lang=\"" + LANGS[i].code + "\">" + esc(x[0]) + "</b><small>Làm bài · 24 câu</small>";
+    b.onclick = () => {langBox.querySelectorAll(".lang").forEach(e => e.classList.remove("on")); b.classList.add("on"); show(i)};
+    langBox.appendChild(b);
+  });
+  show(0);
+  function hist(){
+    const H = load("lp_hist", mem);
+    const el = $("hist");
+    el.hidden = false;
+    if (!H.length) {
+      el.innerHTML = '<p class="eyebrow">Lịch sử bài làm</p><p class="muted">Chưa có bài nào trên trình duyệt này. Lịch sử chỉ lưu trong trình duyệt của bạn. Xóa dữ liệu trình duyệt sẽ xóa lịch sử.</p>';
+      return;
+    }
+    el.innerHTML = '<p class="eyebrow">Lịch sử bài làm</p><p class="muted">Lưu trong trình duyệt của bạn, không gửi đi. Cần ít nhất hai bài cùng ngôn ngữ thì mới so được tổng điểm. Xóa dữ liệu trình duyệt sẽ xóa lịch sử.</p><ul>' +
+      H.map((x, i) => {
+        const pv = H.slice(0, i).filter(y => y.l === x.l).pop();
+        const d = pv ? x.o - pv.o : null;
+        return "<li>" + esc(new Date(x.t).toLocaleDateString("vi-VN")) + " · " + esc(x.l) + " · <b>" + esc(x.c) + "</b> · " + x.o + "%" + (pv ? " · " + (d >= 0 ? "+" : "") + d + " điểm so với lần trước" : "") + "</li>";
+      }).reverse().join("") + "</ul>";
+  }
+  hist();
+  last = load("lp_last", null);
+  const storedReview = load("lp_review", null);
+  if (storedReview && storedReview.items) review = storedReview.items;
+  function todayTask(){
+    if (!userPlan) return "Hãy tạo lộ trình trước.";
+    const di = (new Date().getDay() + 6) % 7;
+    const hit = userPlan.week.find(d => d.idx === di);
+    if (!hit) {
+      const next = userPlan.week[0];
+      return "Hôm nay không nằm trong các ngày đã chọn. Bài gần nhất trên lịch là " + next.name + ": " + next.blocks.map(b => b.m + " phút — " + b.text).join(" ");
+    }
+    return hit.name + " · " + hit.label + ". " + hit.blocks.map(b => b.m + " phút — " + b.text).join(" ");
+  }
+  function dashBody(i){
+    const name = ($("f-name").value || "").trim();
+    const who = name || "bạn";
+    if (i === 0) {
+      const lvl = last ? last.range + " · " + fmtNum(last.raw) + "%" : ($("f-cur").value + " (chưa có bài mới)");
+      const next = userPlan ? userPlan.stages[0].title : "chưa có lộ trình";
+      return "Bảng học của " + who + ". Mức đang xem: " + lvl + ". Việc tiếp theo trên lộ trình: " + next + ".";
+    }
+    if (i === 1) return todayTask();
+    if (i === 2) {
+      const base = readForm();
+      if (base.error) return base.error;
+      const study = buildRoadmap(Object.assign({}, base.profile, {goal:"study", goalNote: base.profile.goal === "study" ? base.profile.goalNote : "Du học"}));
+      const career = buildRoadmap(Object.assign({}, base.profile, {goal:"career", goalNote: base.profile.goal === "career" ? base.profile.goalNote : "Nghề nghiệp"}));
+      return "Cùng mức " + base.profile.current + " → " + base.profile.target + ", " + base.profile.minutes + " phút/ngày. Du học: " + study.stages.map(s => s.title).join(" → ") + ". Nghề nghiệp: " + career.stages.map(s => s.title).join(" → ") + ". Ưu tiên du học: " + study.order.slice(0, 3).map(s => SK[s]).join(", ") + ". Ưu tiên nghề nghiệp: " + career.order.slice(0, 3).map(s => SK[s]).join(", ") + ".";
+    }
+    if (i === 3) {
+      if (!review.length) return "Chưa có câu sai nào được lưu. Làm bài xếp lớp để có danh sách ôn. Danh sách này chỉ nằm trong trình duyệt của bạn.";
+      return review.slice(0, 8).map(x => x.p + " — Đáp án đúng: " + x.a).join("\n");
+    }
+    if (i === 4) return "Phần lịch sử ngay dưới bài xếp lớp so điểm các lần làm cùng ngôn ngữ. Cần ít nhất hai bài. Xóa dữ liệu trình duyệt sẽ xóa tiến độ.";
+    if (i === 5) {
+      const lang = Number($("f-lang").value);
+      const chosen = $("f-cert").value;
+      return (CERTS[lang] || []).map(c => c.name + " · mốc tham khảo " + c.min + (c.id === chosen ? " · đang chọn" : "")).join(". ") + ". Mốc này không phải điểm quy đổi chính thức.";
+    }
+    if (i === 6) return userPlan ? userPlan.resources.join(" ") : "Tạo lộ trình để thấy gợi ý nguồn. Trang không tải tài liệu từ mạng.";
+    if (i === 7) {
+      const w = $("f-weak").value;
+      if (!w || w === "unknown") return "Chưa đủ dữ liệu để chọn một kỹ năng. Hãy giữ đều Đọc, Nghe, Ngữ pháp và Từ vựng. Đây là gợi ý luyện tập từ lộ trình, không phải người chấm.";
+      return SK[w] + ". " + (PR[w] || "Ưu tiên kỹ năng này trong lịch tuần.") + " Đây là gợi ý luyện tập từ lộ trình và bài đã lưu trong trình duyệt của bạn, không phải người chấm và không dự đoán điểm thi.";
+    }
+    return "Tên hiển thị, số phút và số ngày học nằm trong biểu mẫu lộ trình. Chỉ lưu trong trình duyệt này. Xóa dữ liệu trình duyệt sẽ xóa các mục đó.";
+  }
+  function dash(){
+    const dsh = $("dash");
+    dsh.innerHTML = D.map((d, i) => '<button class="card dc" type="button" data-i="' + i + '"><h3>' + d[0] + "</h3><p>" + d[1] + "</p></button>").join("") +
+      '<div class="card note" id="dd" style="grid-column:1/-1" aria-live="polite">Bấm vào một mục để xem chi tiết.</div>';
+    dsh.querySelectorAll(".dc").forEach(b => b.onclick = () => {
+      dsh.querySelectorAll(".dc").forEach(e => e.classList.toggle("on", e === b));
+      const i = +b.dataset.i;
+      $("dd").innerHTML = "<h3>" + D[i][0] + "</h3>" + dashBody(i).split("\n").map(line => "<p>" + esc(line) + "</p>").join("") +
+        (i === 4 ? '<p><a class="textlink" href="#languages">Tới phần làm bài</a></p>' : i === 8 ? '<p><a class="textlink" href="#planForm">Tới biểu mẫu</a></p>' : "");
+    });
+  }
+  dash();
+}
+if (typeof document !== "undefined") boot();
+
 </script>
 </body>
 </html>
